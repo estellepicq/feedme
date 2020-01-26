@@ -12,45 +12,57 @@ h6 {
   font-weight: 700;
 }
 
-header.masthead {
-  position: relative;
-  background-color: #343a40;
-  background: url("../img/bg-masthead.jpg") no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+#landing {
+  background: #fff;
+}
+
+#landing-text {
+  display: flex;
+  flex: 0 1 40vw;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+#landing-text h2 {
+  color: #888;
+}
+
+#landing-image {
+  background: url('https://farm2.staticflickr.com/1886/44454862101_acabf5337d_k.jpg');
+  background-position: center;
   background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  background-repeat: none;
+  height: 50vh;
+  flex: 0 1 60vw;
+  margin: 0;
 }
 
-header.masthead .overlay {
-  position: absolute;
-  background-color: #212529;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.3;
-}
-
-header.masthead h1 {
-  font-size: 2rem;
-}
-
-@media (min-width: 768px) {
-  header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-  }
-  header.masthead h1 {
-    font-size: 3rem;
+@media (min-width: 500px) {
+  #landing {
+    display: flex;
   }
 }
 
-.services {
+.introduction, .services {
   padding-top: 7rem;
   padding-bottom: 7rem;
+}
+
+.services a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.services a:hover {
+  color: var(--primary);
+}
+
+.services .service-heading {
+  margin-top: 20px;
 }
 
 .call-to-action {

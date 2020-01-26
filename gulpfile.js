@@ -1,99 +1,91 @@
-"use strict";
+  const gulp = require('gulp');
+  const rename = require('gulp-rename');
+  const cleanCSS = require('gulp-clean-css');
+  const minify = require('gulp-minify');
+  const concat = require('gulp-concat');
 
-// Load plugins
-const browsersync = require("browser-sync").create();
-const cleanCSS = require("gulp-clean-css");
-const del = require("del");
-const gulp = require("gulp");
-const merge = require("merge-stream");
-const plumber = require("gulp-plumber");
-const rename = require("gulp-rename");
-const sass = require("gulp-sass");
+  const { src, dest, parallel, series, watch } = require('gulp');
 
-// BrowserSync
-function browserSync(done) {
-  browsersync.init({
-    server: {
-      baseDir: "./"
-    },
-    port: 3000
-  });
-  done();
-}
+  // Directories
+  const source = './src/';
+  const destination = './public/';
 
-// BrowserSync reload
-function browserSyncReload(done) {
-  browsersync.reload();
-  done();
-}
+  /* CSS */
+  function css() {
+    return src(source + 'css/styles.css')
+      .pipe(dest(destination + 'css'))
+      .pipe(cleanCSS())
+      .pipe(rename({
+        suffix: '.min'
+      }))
+      .pipe(dest(destination + 'css'));
+  }
 
-// Clean vendor
-function clean() {
-  return del(["./vendor/"]);
-}
+  /* JAVASCRIPT */
+  function js() {
+    return src(source + 'js/*.js')
+      .pipe(minify({
+        ext: {
+          min: '.min.js'
+        },
+        noSource: true
+      }))
+      .pipe(dest(destination + 'js'));
+  }
 
-// Bring third party dependencies from node_modules into vendor directory
-function modules() {
-  // Bootstrap
-  var bootstrap = gulp.src('./node_modules/bootstrap/dist/**/*')
-    .pipe(gulp.dest('./vendor/bootstrap'));
-  // Font Awesome CSS
-  var fontAwesomeCSS = gulp.src('./node_modules/@fortawesome/fontawesome-free/css/**/*')
-    .pipe(gulp.dest('./vendor/fontawesome-free/css'));
-  // Font Awesome Webfonts
-  var fontAwesomeWebfonts = gulp.src('./node_modules/@fortawesome/fontawesome-free/webfonts/**/*')
-    .pipe(gulp.dest('./vendor/fontawesome-free/webfonts'));
-  // jQuery Easing
-  var jqueryEasing = gulp.src('./node_modules/jquery.easing/*.js')
-    .pipe(gulp.dest('./vendor/jquery-easing'));
-  // jQuery
-  var jquery = gulp.src([
-      './node_modules/jquery/dist/*',
-      '!./node_modules/jquery/dist/core.js'
+  /* BOOTSTRAP & FONT AWESOME & JQUERY BUNDLE */
+  // CSS VENDOR BUNDLE
+  function vendorcss() {
+    return src([
+      'node_modules/bootstrap/dist/css/bootstrap.min.css',
+      'node_modules/@fortawesome/fontawesome-free/css/all.min.css'
     ])
-    .pipe(gulp.dest('./vendor/jquery'));
-  // Simple Line Icons
-  var simpleLineIconsFonts = gulp.src('./node_modules/simple-line-icons/fonts/**')
-    .pipe(gulp.dest('./vendor/simple-line-icons/fonts'));
-  var simpleLineIconsCSS = gulp.src('./node_modules/simple-line-icons/css/**')
-    .pipe(gulp.dest('./vendor/simple-line-icons/css'));
-  return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jquery, jqueryEasing, simpleLineIconsFonts, simpleLineIconsCSS);
-}
+    .pipe(concat('vendors.css'))
+    .pipe(dest(destination + 'css'));
+  }
 
-// CSS task
-function css() {
-  return gulp
-    .src("./scss/**/*.scss")
-    .pipe(plumber())
-    .pipe(sass({
-      outputStyle: "expanded",
-      includePaths: "./node_modules",
-    }))
-    .on("error", sass.logError)
-    .pipe(gulp.dest("./css"))
-    .pipe(rename({
-      suffix: ".min"
-    }))
-    .pipe(cleanCSS())
-    .pipe(gulp.dest("./css"))
-    .pipe(browsersync.stream());
-}
+  // JS VENDOR BUNDLE
+  function vendorjs() {
+    return src([
+      'node_modules/jquery/dist/jquery.min.js',
+      'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
+    ])
+    .pipe(concat('vendors.js'))
+    .pipe(dest(destination + 'js'));
+  }
 
-// Watch files
-function watchFiles() {
-  gulp.watch("./scss/**/*", css);
-  gulp.watch("./**/*.html", browserSyncReload);
-}
+  // Font Awesome
+  function fontawesomefonts() {
+    return src([
+      './node_modules/@fortawesome/fontawesome-free/webfonts/*'
+    ])
+    .pipe(dest(destination + 'webfonts'));
+  }
 
-// Define complex tasks
-const vendor = gulp.series(clean, modules);
-const build = gulp.series(vendor, css);
-const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 
-// Export tasks
-exports.css = css;
-exports.clean = clean;
-exports.vendor = vendor;
-exports.build = build;
-exports.watch = watch;
-exports.default = build;
+  /* IMAGES */
+  function img() {
+    return src(source + 'img/*.*')
+    .pipe(dest(destination + 'img'));
+  }
+
+  /* TASKS */
+
+  // Watch files
+  function watchFiles() {
+    watch(source + 'css/*.css', css);
+    watch(source + 'js/*.js', js);
+    watch(source + 'img/*.*', img);
+    watch('index.html');
+  }
+
+  exports.css = css;
+  exports.js = js;
+  exports.vendorjs = vendorjs;
+  exports.vendorcss = vendorcss;
+  exports.fontawesomefonts = fontawesomefonts;
+  exports.img = img;
+  const dev = parallel(css, js, vendorjs, vendorcss, fontawesomefonts, img);
+  exports.default = dev;
+  exports.watch = parallel(dev, watchFiles);
+

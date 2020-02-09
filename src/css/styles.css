@@ -14,6 +14,7 @@ h6 {
 
 #landing {
   background: #fff;
+  box-shadow: 2px 2px 10px #ccc;
 }
 
 #landing-text {
@@ -32,13 +33,14 @@ h6 {
 }
 
 #landing-image {
-  background: url('https://farm2.staticflickr.com/1886/44454862101_acabf5337d_k.jpg');
+  background: url('../img/header.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: none;
   height: 50vh;
   flex: 0 1 60vw;
   margin: 0;
+  filter: saturate(0.5);
 }
 
 @media (min-width: 500px) {
@@ -68,7 +70,7 @@ h6 {
 .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url("../img/bg-masthead.jpg") no-repeat center center;
+  background: url("../img/header.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

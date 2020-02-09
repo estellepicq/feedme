@@ -13,7 +13,6 @@
   /* CSS */
   function css() {
     return src(source + 'css/styles.css')
-      .pipe(dest(destination + 'css'))
       .pipe(cleanCSS())
       .pipe(rename({
         suffix: '.min'

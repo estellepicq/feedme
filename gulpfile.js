@@ -48,7 +48,8 @@
   function vendorjs() {
     return src([
       'node_modules/jquery/dist/jquery.min.js',
-      'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
+      'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+      'node_modules/@lcluber/aiasjs/dist/aias.iife.min.js'
     ])
     .pipe(concat('vendors.js'))
     .pipe(dest(destination + 'js'));

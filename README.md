@@ -1,16 +1,15 @@
-# Le Tiroir à Chaussettes
+# Feeding Good
 
 ## Description
 
-Le Tiroir à Chaussettes website
+Feeding Good website
 
 ## Install
 
-* `cd ltc`
 * `npm install`
 * `gulp`
 
 ## Dev mode
 
 * `gulp watch`
-* Open index.html
+* Open index.html with live server

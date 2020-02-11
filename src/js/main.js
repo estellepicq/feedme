@@ -32,11 +32,26 @@ function getFooodItems() {
 
 function displayList(items) {
 	items.forEach((item, index) => {
+		// Create element
 		var itemElt = document.createElement('div');
 		itemElt.textContent = item.name;
 		itemElt.classList.add('item', 'displayed');
 		itemElt.id = 'item_' + index;
-		listElt.appendChild(itemElt);
+		// Find parent element
+		var category = item.fodmaps_category.toLowerCase().replace(' ', '');
+		var parentElt = document.getElementById(category);
+		// Create parent element if not found
+		if (!parentElt) {
+			parentElt = document.createElement('div');
+			parentElt.id = category;
+			listElt.append(parentElt);
+			// Create category title
+			var title = document.createElement('h4');
+			title.textContent = item.fodmaps_category;
+			parentElt.append(title);
+		}
+		// Append
+		parentElt.appendChild(itemElt);
 	});
 	
 }

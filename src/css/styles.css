@@ -96,7 +96,27 @@ footer.footer {
 
 
 /* LIST */
-#list .item:not(.displayed) {
+#list.filtered-list .filtered-list-category {
+  display: flex;
+}
+
+#list.filtered-list h4,
+#list.filtered-list :not(.filtered-list-category) h5,
+#list:not(.filtered-list) .filtered-list-category,
+#list .item.hidden {
   display: none;
 }
 
+#list .item {
+  text-align: left;;
+}
+
+#list .category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#list .category h4 {
+  width: 100%
+}

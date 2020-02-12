@@ -96,19 +96,12 @@ footer.footer {
 
 
 /* LIST */
-#list.filtered-list .filtered-list-category {
-  display: flex;
-}
-
-#list.filtered-list h4,
-#list.filtered-list :not(.filtered-list-category) h5,
-#list:not(.filtered-list) .filtered-list-category,
-#list .item.hidden {
+#search.filtering #list {
   display: none;
 }
 
 #list .item {
-  text-align: left;;
+  text-align: left;
 }
 
 #list .category {
@@ -120,3 +113,4 @@ footer.footer {
 #list .category h4 {
   width: 100%
 }
+

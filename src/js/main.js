@@ -1,5 +1,6 @@
+var searchSection = document.getElementById('search');
 var listElt = document.getElementById('list');
-var querylistElt = document.getElementById('querylist');
+var filteredListElt = document.getElementById('filteredList');
 var searchInput = document.getElementById('searchInput');
 
 // Load & display food items
@@ -10,17 +11,13 @@ searchInput.addEventListener('keyup', function () {
 	var search = searchInput.value;
 	foodItems.forEach((foodItem, index) => {
 		if (searchInput.value) {
-			listElt.classList.add('filtered-list');
+			searchSection.classList.add('filtering');
 		} else {
-			listElt.classList.remove('filtered-list');
+			searchSection.classList.remove('filtering');
 		}
 		var itemElt = document.getElementById('item_' + index);
-		if (!foodItem.name.toLowerCase().includes(search.toLowerCase())) {
-			if (!itemElt.classList.contains('hidden')) {
-				itemElt.classList.add('hidden');
-			}
-		} else {
-			itemElt.classList.remove('hidden');
+		if (foodItem.name.toLowerCase().includes(search.toLowerCase())) {
+			// Add it to filtered list
 		}
 	});
 });
@@ -40,7 +37,8 @@ function displayList(items) {
 	items.forEach((item, index) => {
 		// Create element
 		var itemElt = document.createElement('div');
-		itemElt.textContent = item.name;
+		var cutoff = item.fodmaps_cutoff ? ' - ' + item.fodmaps_cutoff : ''
+		itemElt.textContent = item.name + cutoff;
 		itemElt.setAttribute('class', 'item');
 		itemElt.id = 'item_' + index;
 		// Find parent element

@@ -69,6 +69,12 @@
     .pipe(dest(destination + 'img'));
   }
 
+  /* PDF */
+  function assets() {
+    return src(source + 'assets/*.*')
+    .pipe(dest(destination + 'assets'));
+  }
+
   /* TASKS */
 
   // Watch files
@@ -85,7 +91,8 @@
   exports.vendorcss = vendorcss;
   exports.fontawesomefonts = fontawesomefonts;
   exports.img = img;
-  const dev = parallel(css, js, vendorjs, vendorcss, fontawesomefonts, img);
+  exports.assets = assets;
+  const dev = parallel(css, js, vendorjs, vendorcss, fontawesomefonts, img, assets);
   exports.default = dev;
   exports.watch = parallel(dev, watchFiles);
 

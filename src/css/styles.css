@@ -96,8 +96,16 @@ footer.footer {
 
 
 /* LIST */
+#search .download {
+  padding: 40px;
+  margin-top: 3rem;
+}
+
 #search.filtering #list {
   display: none;
+}
+#search:not(.filtering) #list {
+  display: block;
 }
 
 #list .item {
@@ -107,10 +115,35 @@ footer.footer {
 #list .category {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px auto;
 }
 
 #list .category h4 {
   width: 100%
 }
 
+#filteredList .filtered-item {
+  display: none;
+  align-items: center;
+}
+
+#filteredList .filtered-item.displayed {
+  display: flex;
+}
+
+#filteredList .filtered-item .indicator {
+  width: 30px;
+  height: 15px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+#filteredList .filtered-item .indicator.low {
+  background-color: #49d869;
+}
+
+#filteredList .filtered-item .indicator.high {
+  background-color: #dc3545;
+}

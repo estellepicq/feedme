@@ -10,14 +10,19 @@ getFooodItems();
 searchInput.addEventListener('keyup', function () {
 	var search = searchInput.value;
 	foodItems.forEach((foodItem, index) => {
+		var itemElt = document.getElementById('item_' + index);
 		if (searchInput.value) {
 			searchSection.classList.add('filtering');
+			if (foodItem.name.toLowerCase().includes(search.toLowerCase())) {
+				if (!itemElt.classList.contains('displayed')) {
+					itemElt.classList.add('displayed');
+				}
+			} else {
+				itemElt.classList.remove('displayed');
+			}
 		} else {
 			searchSection.classList.remove('filtering');
-		}
-		var itemElt = document.getElementById('item_' + index);
-		if (foodItem.name.toLowerCase().includes(search.toLowerCase())) {
-			// Add it to filtered list
+			itemElt.classList.remove('displayed');
 		}
 	});
 });
@@ -26,7 +31,8 @@ function getFooodItems() {
 	Aias.HTTP.GET('http://nutrimetrics.estellepicq.com/food?fodmaps=1', 'json')
 		.then(response => {
 			foodItems = response;
-			this.displayList(foodItems);
+			displayList(foodItems);
+			displayFilteredList(foodItems);
 		})
 		.catch(err => {
 			console.log("error", err);
@@ -34,13 +40,12 @@ function getFooodItems() {
 }
 
 function displayList(items) {
-	items.forEach((item, index) => {
+	items.forEach((item) => {
 		// Create element
 		var itemElt = document.createElement('div');
-		var cutoff = item.fodmaps_cutoff ? ' - ' + item.fodmaps_cutoff : ''
+		var cutoff = item.fodmaps_cutoff ? ' - ' + item.fodmaps_cutoff + ' max' : ''
 		itemElt.textContent = item.name + cutoff;
 		itemElt.setAttribute('class', 'item');
-		itemElt.id = 'item_' + index;
 		// Find parent element
 		var category = item.fodmaps_category.toLowerCase().replace(/ /g, '');
 		var parentElt = document.getElementById(category);
@@ -72,5 +77,18 @@ function displayList(items) {
 		var section = document.getElementById(category + '_' + item.fodmaps_indicator);
 		section.appendChild(itemElt);
 	});
+}
 
+function displayFilteredList(items) {
+	var low = '<div class="indicator low"></div>';
+	var high = '<div class="indicator high"></div>';
+	items.forEach((item, index) => {
+		var itemElt = document.createElement('div');
+		var cutoff = item.fodmaps_cutoff ? ' - ' + item.fodmaps_cutoff + ' max' : '';
+		var indicator = item.fodmaps_indicator === 'low' ? low : high;
+		itemElt.innerHTML = indicator + item.name + cutoff;
+		itemElt.setAttribute('class', 'filtered-item');
+		itemElt.id = 'item_' + index;
+		filteredListElt.appendChild(itemElt);
+	});
 }

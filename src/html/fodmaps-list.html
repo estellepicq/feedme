@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  @@include('./structure/header.html', {
+    "title": " - La liste des aliments"
+  })
+
+<body>
+
+  <!-- Navigation -->
+  @@include('./structure/navbar.html')
+
+  <!-- List -->
+  <section id="search" class="introduction text-center">
+    <h1 class="mb-5">Liste des aliments pauvres et riches en FODMAPs</h1>
+    <div class="col-md-11 mx-auto">
+      <div class="form-group">
+        <input type="text" class="form-control" id="searchInput" aria-describedby="searchInput" placeholder="Filtrer...">
+      </div>
+    </div>
+    <div id="list"></div>
+    <div id="filteredList" class="col-md-11 mx-auto"></div>
+    <div class="download">
+      <a class="btn btn-primary" href="../public/assets/FODMAPS.pdf" download>Téléchargez gratuitement la liste complète</a>
+    </div>
+  </section>
+
+  @@include('./structure/footer.html')
+
+  <!-- Custom JS -->
+  <script src="../public/js/main.min.js"></script>
+
+</body>
+
+</html>

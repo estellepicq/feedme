@@ -1,5 +1,10 @@
+
+
 html {
   scroll-behavior: smooth;
+  --main-bg-color: #AA4465;
+  --secondary-bg-color: #79213d;
+  --main-font-color: #212529;
 }
 
 body {
@@ -16,8 +21,40 @@ h6 {
   font-weight: 700;
 }
 
+/* COLORS */
+
+.btn-custom {
+  background-color: var(--main-link-color);
+  color: #fff !important;
+}
+
+.btn-custom:hover, .btn-custom:active {
+  background-color: var(--secondary-bg-color);
+  color: #fff !important;
+}
+
+.text-custom {
+  color: var(--main-bg-color);
+}
+
+a {
+  color: var(--main-bg-color) !important;
+}
+
+a:hover {
+  color: var(--secondary-bg-color) !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #fff !important;
+  color: var(--secondary-bg-color) !important;
+}
+
+/* SECTIONS */
+
 #landing {
-  background: #fff;
+  background-color: var(--main-bg-color);
+  color: #fff;
   box-shadow: 2px 2px 10px #ccc;
 }
 
@@ -53,9 +90,19 @@ h6 {
   }
 }
 
+@media (max-width: 500px) {
+  #landing-text {
+    height: 20vh;
+  }
+  #landing-image {
+    height: 10vh;
+  }
+}
+
+
 .introduction, .services {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .services a {
@@ -73,12 +120,7 @@ h6 {
 
 .call-to-action {
   position: relative;
-  background-color: #343a40;
-  background: url("../img/header.jpg") no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-color: var(--main-bg-color);
   padding-top: 7rem;
   padding-bottom: 7rem;
 }
@@ -125,7 +167,7 @@ footer.footer {
 }
 
 #list .category h4 {
-  width: 100%
+  width: 100%;
 }
 
 #filteredList .filtered-item {

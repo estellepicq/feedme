@@ -21,12 +21,30 @@
 <body>
 
   <!-- Navigation -->
-  
-  <nav class="navbar navbar-light bg-light static-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Feeding Good</a>
-    </div>
-  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html">Feeding Good</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Les FODMAPs
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="fodmaps-description.html">Les FODMAPs, c'est quoi ?</a>
+          <a class="dropdown-item" href="fodmaps-list.html">La liste des aliments</a>
+          <a class="dropdown-item" href="fodmaps-recipes.html">Les recettes</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 
   <div id="landing">
@@ -34,8 +52,6 @@
       <div id="landing-text-inner">
         <h1>Feeding Good</h1>
         <p class="lead">Alimentation - Santé - Bien-être</p>
-        <!-- <h2></h2> -->
-        <!-- <a href="#images" class="btn" id="view-work">Discover</a> -->
       </div>
     </div>
     <div id="landing-image"></div>
@@ -52,12 +68,12 @@
     <div id="list"></div>
     <div id="filteredList" class="col-md-11 mx-auto"></div>
     <div class="download">
-      <a class="btn btn-primary" href="../public/assets/FODMAPS.pdf" download>Téléchargez gratuitement la liste complète</a>
+      <a class="btn btn-custom" href="../public/assets/FODMAPS.pdf" download>Téléchargez gratuitement la liste complète</a>
     </div>
   </section>
 
   <!-- Call to Action -->
-<section class="call-to-action text-white text-center" id="actionForm">
+<!-- <section class="call-to-action text-white text-center" id="actionForm">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -71,14 +87,14 @@
               <input type="email" class="form-control form-control-lg" placeholder="Saisir votre email...">
             </div>
             <div class="col-12 col-md-3">
-              <button type="submit" class="btn btn-block btn-lg btn-primary">Valider</button>
+              <button type="submit" class="btn btn-block btn-lg btn-custom">Valider</button>
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- Footer -->
 <footer class="footer bg-light">
@@ -102,7 +118,7 @@
       </div>
       <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
         <ul class="list-inline mb-0">
-          <li class="list-inline-item mr-3">
+          <!-- <li class="list-inline-item mr-3">
             <a href="#">
               <i class="fab fa-facebook fa-2x fa-fw"></i>
             </a>
@@ -111,7 +127,7 @@
             <a href="#">
               <i class="fab fa-twitter-square fa-2x fa-fw"></i>
             </a>
-          </li>
+          </li> -->
           <li class="list-inline-item">
             <a href="#">
               <i class="fab fa-instagram fa-2x fa-fw"></i>

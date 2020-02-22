@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@@include('./structure/header.html')
+@@include('./structure/header.html', {
+  "title": ""
+})
 
 <body>
 
@@ -18,7 +20,7 @@
           <p class="lead">Vos problèmes viennent peut-être des aliments contenant des FODMAPs en trop grande quantité !</p>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto mt-5">
-          <a type="button" class="btn btn-lg btn-primary" href="#services">En savoir plus</a>
+          <a type="button" class="btn btn-lg btn-custom" href="#services">En savoir plus</a>
         </div>
       </div>
     </div>
@@ -32,7 +34,7 @@
         <div class="col-md-4">
           <a href="fodmaps-description.html">
             <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"></i>
+              <i class="fas fa-circle fa-stack-2x text-custom"></i>
               <i class="fas fa-tasks fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">Les FODMAPs, c'est quoi ?</h4>
@@ -42,7 +44,7 @@
         <div class="col-md-4">
           <a href="fodmaps-list.html">
             <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"></i>
+              <i class="fas fa-circle fa-stack-2x text-custom"></i>
               <i class="fas fa-carrot fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">La liste</h4>
@@ -52,7 +54,7 @@
         <div class="col-md-4">
           <a href="fodmaps-recipes.html">
             <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"></i>
+              <i class="fas fa-circle fa-stack-2x text-custom"></i>
               <i class="fas fa-utensils fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">Les recettes</h4>

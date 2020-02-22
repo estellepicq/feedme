@@ -94,7 +94,7 @@ function watchFiles() {
   watch(source + 'css/*.css', css);
   watch(source + 'js/*.js', js);
   watch(source + 'img/*.*', img);
-  watch(source + 'html/*.html', html);
+  watch(source + 'html/**', html);
 }
 
 exports.html = html;

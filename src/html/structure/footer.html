@@ -33,11 +33,11 @@
           </li>
           <li class="list-inline-item">&sdot;</li>
           <li class="list-inline-item">
-            <a href="#">Contact</a>
+            <a href="#" data-toggle="modal" data-target="#contactModal">Contact</a>
           </li>
           <li class="list-inline-item">&sdot;</li>
           <li class="list-inline-item">
-            <a href="#">Mentions légales</a>
+            <a href="#" data-toggle="modal" data-target="#legalModal">Mentions légales</a>
           </li>
         </ul>
         <p class="text-muted small mb-4 mb-lg-0">&copy; Feeding Good 2020</p>
@@ -64,6 +64,9 @@
     </div>
   </div>
 </footer>
+
+@@include('./src/html/components/modal.html', { "section": "contact", "sectionTitle": "Pour me contacter" })
+@@include('./src/html/components/modal.html', { "section": "legal", "sectionTitle": "Mentions légales" })
 
 <!-- Vendors -->
 <script src="../public/js/vendors.js"></script>

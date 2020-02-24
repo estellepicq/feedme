@@ -14,12 +14,17 @@ const views = './views/';
 
 /* HTML */
 function html() {
-  return src(source + 'html/*.html')
-    .pipe(fileInclude({
-      prefix: '@@',
-      basepath: '@file'
-    }))
-    .pipe(dest(views));
+  return src([
+    source + 'html/*.html',
+    source + 'html/basics/*.html',
+    source + 'html/fodmaps/*.html',
+    source + 'html/components/*.html',
+  ])
+  .pipe(fileInclude({
+    prefix: '@@',
+    basepath: '@root'
+  }))
+  .pipe(dest(views));
 }
 
 /* CSS */

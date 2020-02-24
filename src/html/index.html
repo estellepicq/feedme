@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@@include('./structure/header.html', {
+@@include('./src/html/structure/header.html', {
   "title": ""
 })
 
 <body>
 
-  @@include('./structure/navbar.html')
+  @@include('./src/html/structure/navbar.html')
 
   <!-- Introduction -->
   <section class="introduction text-center">
@@ -58,10 +58,20 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
+          <a href="basics.html">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x text-custom"></i>
+              <i class="fas fa-seedling fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading">Les bases</h4>
+            <p class="text-muted">Les clés d'une alimentation saine : comment manger équilibré, en toute simplicité.</p>
+          </a>
+        </div> 
+        <div class="col-md-4">
           <a href="fodmaps-home.html">
             <span class="fa-stack fa-4x">
               <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-tasks fa-stack-1x fa-inverse"></i>
+              <i class="fas fa-exclamation-triangle fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">Intolérance aux FODMAPs</h4>
             <p class="text-muted">Tout ce qu'il faut savoir sur les FODMAPs et pourquoi y faire attention.</p>
@@ -71,27 +81,17 @@
           <a href="#">
             <span class="fa-stack fa-4x">
               <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-carrot fa-stack-1x fa-inverse"></i>
+              <i class="fas fa-cookie-bite fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading"></h4>
-            <p class="text-muted"></p>
-          </a>
-        </div> 
-        <div class="col-md-4">
-          <a href="#">
-            <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-utensils fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading"></h4>
-            <p class="text-muted"></p>
+            <h4 class="service-heading">Les recettes</h4>
+            <p class="text-muted">Petit-déjeuner, plat, dessert... Pour se régaler en prenant soin de sa santé !</p>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  @@include('./structure/footer.html')
+  @@include('./src/html/structure/footer.html')
 
 </body>
 

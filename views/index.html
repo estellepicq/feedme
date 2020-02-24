@@ -31,6 +31,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.html">Accueil <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="basics.html">Les Bases</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Les FODMAPs
@@ -105,10 +108,20 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
+          <a href="basics.html">
+            <span class="fa-stack fa-4x">
+              <i class="fas fa-circle fa-stack-2x text-custom"></i>
+              <i class="fas fa-seedling fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading">Les bases</h4>
+            <p class="text-muted">Les clés d'une alimentation saine : comment manger équilibré, en toute simplicité.</p>
+          </a>
+        </div> 
+        <div class="col-md-4">
           <a href="fodmaps-home.html">
             <span class="fa-stack fa-4x">
               <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-tasks fa-stack-1x fa-inverse"></i>
+              <i class="fas fa-exclamation-triangle fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">Intolérance aux FODMAPs</h4>
             <p class="text-muted">Tout ce qu'il faut savoir sur les FODMAPs et pourquoi y faire attention.</p>
@@ -118,20 +131,10 @@
           <a href="#">
             <span class="fa-stack fa-4x">
               <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-carrot fa-stack-1x fa-inverse"></i>
+              <i class="fas fa-cookie-bite fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading"></h4>
-            <p class="text-muted"></p>
-          </a>
-        </div> 
-        <div class="col-md-4">
-          <a href="#">
-            <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-utensils fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading"></h4>
-            <p class="text-muted"></p>
+            <h4 class="service-heading">Les recettes</h4>
+            <p class="text-muted">Petit-déjeuner, plat, dessert... Pour se régaler en prenant soin de sa santé !</p>
           </a>
         </div>
       </div>
@@ -173,11 +176,11 @@
           </li>
           <li class="list-inline-item">&sdot;</li>
           <li class="list-inline-item">
-            <a href="#">Contact</a>
+            <a href="#" data-toggle="modal" data-target="#contactModal">Contact</a>
           </li>
           <li class="list-inline-item">&sdot;</li>
           <li class="list-inline-item">
-            <a href="#">Mentions légales</a>
+            <a href="#" data-toggle="modal" data-target="#legalModal">Mentions légales</a>
           </li>
         </ul>
         <p class="text-muted small mb-4 mb-lg-0">&copy; Feeding Good 2020</p>
@@ -204,6 +207,77 @@
     </div>
   </div>
 </footer>
+
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Pour me contacter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="contactFormContainer" class="contact-form-container">
+  <form class="flex-container direction-column">
+    <div class="form-field">
+      <input type="text" name="name" id="name" required>
+      <span class="bar"></span>
+      <label for="name">Nom*</label>
+    </div>
+    <div class="form-field">
+      <input type="text" name="email" id="email" required>
+      <span class="bar"></span>
+      <label for="email">Email*</label>
+    </div>
+    <div class="form-field">
+      <textarea name="message" id="message" cols="30" rows="5" required></textarea>
+      <span class="bar"></span>
+      <label for="message">Message*</label>
+    </div>
+  </form>
+  <button type="button" class="contact-btn" id="contactBtn" disabled>Envoyer</button>
+  <div id="errorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
+</div>
+<div id="successMessage" class="success-message">Message envoyé 👌</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="legalModal" tabindex="-1" role="dialog" aria-labelledby="legalModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="legalModalLabel">Mentions légales</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Editeur</h5>
+<p>
+  Estelle Picq
+  <br>
+  <a href="http://www.estellepicq.com">www.estellepicq.com</a>
+</p>
+<h5>Hébergeur</h5>
+<p>
+  OVH
+  <br>
+  <a href="https://www.ovh.com/fr/">www.ovh.com</a>
+</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Vendors -->
 <script src="../public/js/vendors.js"></script>

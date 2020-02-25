@@ -1,0 +1,59 @@
+#search {
+  .download {
+    padding: 40px;
+    margin-top: 3rem;
+  }
+  
+  &.filtering #list {
+    display: none;
+  }
+  
+  &:not(.filtering) #list {
+    display: block;
+  }
+  
+  #list {
+    .item {
+      text-align: left;
+    }
+    
+    .category {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 80%;
+      margin: 20px auto;
+    }
+    
+    .category h4 {
+      width: 100%;
+    }
+  }
+  
+  #filteredList {
+    .filtered-item {
+      display: none;
+      align-items: center;
+
+      &.displayed {
+        display: flex;
+      }
+
+      .indicator {
+        width: 30px;
+        height: 15px;
+        border-radius: 10px;
+        margin-right: 10px;
+
+        &.low {
+          background-color: #49d869;
+        }
+        
+        &.high {
+          background-color: #dc3545;
+        }
+      }
+    }
+  }
+}
+  

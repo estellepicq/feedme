@@ -1,0 +1,93 @@
+html {
+  scroll-behavior: smooth;
+  --main-bg-color: #AA4465;
+  --secondary-bg-color: #79213d;
+  --main-font-color: #212529;
+}
+
+body {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+/* COLORS */
+
+.btn-custom {
+  background-color: var(--main-link-color);
+  color: #fff !important;
+}
+
+.btn-custom:hover, .btn-custom:active {
+  background-color: var(--secondary-bg-color);
+  color: #fff !important;
+}
+
+.text-custom {
+  color: var(--main-bg-color);
+}
+
+a {
+  color: var(--main-bg-color) !important;
+}
+
+a:hover {
+  color: var(--secondary-bg-color) !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #fff !important;
+  color: var(--secondary-bg-color) !important;
+}
+
+/* SECTIONS */
+
+.introduction, .services {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.services {
+  a {
+    text-decoration: none;
+    color: inherit;
+    }
+
+  a:hover {
+    color: var(--primary);
+  }
+
+  .service-heading {
+    margin-top: 20px;
+  }
+}
+
+.call-to-action {
+  position: relative;
+  background-color: var(--main-bg-color);
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+
+  .overlay {
+    position: absolute;
+    background-color: #212529;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+  }
+}
+
+footer.footer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}

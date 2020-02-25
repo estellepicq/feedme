@@ -1,9 +1,9 @@
-const gulp = require('gulp');
 const rename = require('gulp-rename');
 const cleanCSS = require('gulp-clean-css');
 const minify = require('gulp-minify');
 const concat = require('gulp-concat');
-const fileInclude = require('gulp-file-include')
+const fileInclude = require('gulp-file-include');
+const sass = require('gulp-sass');
 
 const { src, dest, parallel, series, watch } = require('gulp');
 
@@ -29,7 +29,9 @@ function html() {
 
 /* CSS */
 function css() {
-  return src(source + 'css/styles.css')
+  return src(source + 'scss/*.scss')
+    .pipe(concat('styles.scss'))
+    .pipe(sass())
     .pipe(cleanCSS())
     .pipe(rename({
       suffix: '.min'

@@ -187,7 +187,7 @@
       <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
         <ul class="list-inline mb-2">
           <li class="list-inline-item">
-            <a href="#">A propos</a>
+            <a href="#" data-toggle="modal" data-target="#aboutModal">A propos</a>
           </li>
           <li class="list-inline-item">&sdot;</li>
           <li class="list-inline-item">
@@ -232,30 +232,32 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div id="contactFormContainer" class="contact-form-container">
-  <form class="flex-container direction-column">
-    <div class="form-field">
-      <input type="text" name="name" id="name" required>
-      <span class="bar"></span>
-      <label for="name">Nom*</label>
-    </div>
-    <div class="form-field">
-      <input type="text" name="email" id="email" required>
-      <span class="bar"></span>
-      <label for="email">Email*</label>
-    </div>
-    <div class="form-field">
-      <textarea name="message" id="message" cols="30" rows="5" required></textarea>
-      <span class="bar"></span>
-      <label for="message">Message*</label>
-    </div>
-  </form>
-  <button type="button" class="contact-btn" id="contactBtn" disabled>Envoyer</button>
-  <div id="errorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
-</div>
-<div id="successMessage" class="success-message">Message envoyé 👌</div>
+
+<div class="modal-body">
+  <div id="contactFormContainer" class="contact-form-container">
+    <form class="flex-container direction-column">
+      <div class="form-field">
+        <input type="text" name="name" id="name" required>
+        <span class="bar"></span>
+        <label for="name">Nom*</label>
       </div>
+      <div class="form-field">
+        <input type="text" name="email" id="email" required>
+        <span class="bar"></span>
+        <label for="email">Email*</label>
+      </div>
+      <div class="form-field">
+        <textarea name="message" id="message" cols="30" rows="5" required></textarea>
+        <span class="bar"></span>
+        <label for="message">Message*</label>
+      </div>
+    </form>
+    <button type="button" class="contact-btn" id="contactBtn" disabled>Envoyer</button>
+    <div id="errorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
+  </div>
+  <div id="successMessage" class="success-message">Message envoyé 👌</div>
+</div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
       </div>
@@ -272,20 +274,57 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <h5>Editeur</h5>
-<p>
-  Estelle Picq
-  <br>
-  <a href="http://www.estellepicq.com">www.estellepicq.com</a>
-</p>
-<h5>Hébergeur</h5>
-<p>
-  OVH
-  <br>
-  <a href="https://www.ovh.com/fr/">www.ovh.com</a>
-</p>
+
+<div class="modal-body">
+  <h5>Editeur</h5>
+  <p>
+    Estelle Picq
+    <br>
+    <a href="http://www.estellepicq.com">www.estellepicq.com</a>
+  </p>
+  <h5>Hébergeur</h5>
+  <p>
+    OVH
+    <br>
+    <a href="https://www.ovh.com/fr/">www.ovh.com</a>
+  </p>
+</div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="aboutModalLabel">A propos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+<div class="modal-body">
+  <h5>Qui suis-je ?</h5>
+  <img src="../public/img/avatar.png" class="rounded-circle" alt="avatar" height="100" width="100">
+
+  <p>
+    Bonjour à toi et bienvenue sur Feeding Good ! Je suis Estelle et je partage ici des recettes et conseils pour adopter une alimentation saine, ou
+    tout simplement pour s'inspirer de quelques idées !
+  </p>
+  <p>
+    Diplômée en Génie Biochimique, je suis passionnée par la science qui se cache derrière l'alimentation. J'espère rendre accessibles à tous les
+    principes de base, et montrer qu'il est en fait tout simple de bien se nourrir, sans devoir suivre les dernières modes et autres régimes spéciaux,
+    ni se préoccuper des actualités alarmantes sur tel ou tel aliment.
+  </p>
+  <p>
+    Si tu as des questions, n'hésite pas à me contacter via le formulaire sur ce site, ou bien sur Instagram, je serai ravie d'échanger avec toi.
+  </p>
+</div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
       </div>

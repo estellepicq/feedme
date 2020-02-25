@@ -29,7 +29,7 @@
       <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
         <ul class="list-inline mb-2">
           <li class="list-inline-item">
-            <a href="#">A propos</a>
+            <a href="#" data-toggle="modal" data-target="#aboutModal">A propos</a>
           </li>
           <li class="list-inline-item">&sdot;</li>
           <li class="list-inline-item">
@@ -65,8 +65,9 @@
   </div>
 </footer>
 
-@@include('./src/html/components/modal.html', { "section": "contact", "sectionTitle": "Pour me contacter" })
-@@include('./src/html/components/modal.html', { "section": "legal", "sectionTitle": "Mentions légales" })
+@@include('./src/html/components/contact.html')
+@@include('./src/html/components/legal.html')
+@@include('./src/html/components/about.html')
 
 <!-- Vendors -->
 <script src="../public/js/vendors.js"></script>

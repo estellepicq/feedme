@@ -4,13 +4,36 @@ const minify = require('gulp-minify');
 const concat = require('gulp-concat');
 const fileInclude = require('gulp-file-include');
 const sass = require('gulp-sass');
+const del = require("del");
+const browsersync = require("browser-sync").create();
 
 const { src, dest, parallel, series, watch } = require('gulp');
 
 // Directories
 const source = './src/';
 const destination = './public/';
-const views = './views/';
+
+// BrowserSync
+function browserSync(done) {
+  browsersync.init({
+    server: {
+      baseDir: "./public/"
+    },
+    port: 3000
+  });
+  done();
+}
+
+// BrowserSync reload
+function browserSyncReload(done) {
+  browsersync.reload();
+  done();
+}
+
+// Clean public
+function clean() {
+  return del(['./public/']);
+}
 
 /* HTML */
 function html() {
@@ -24,7 +47,8 @@ function html() {
     prefix: '@@',
     basepath: '@root'
   }))
-  .pipe(dest(views));
+  .pipe(dest(destination))
+  .pipe(browsersync.stream());
 }
 
 /* CSS */
@@ -36,7 +60,8 @@ function css() {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(dest(destination + 'css'));
+    .pipe(dest(destination + 'css'))
+    .pipe(browsersync.stream());
 }
 
 /* JAVASCRIPT */
@@ -48,7 +73,8 @@ function js() {
       },
       noSource: true
     }))
-    .pipe(dest(destination + 'js'));
+    .pipe(dest(destination + 'js'))
+    .pipe(browsersync.stream());
 }
 
 /* BOOTSTRAP & FONT AWESOME & JQUERY BUNDLE */
@@ -85,13 +111,15 @@ function fontawesomefonts() {
 /* IMAGES */
 function img() {
   return src(source + 'img/*.*')
-    .pipe(dest(destination + 'img'));
+    .pipe(dest(destination + 'img'))
+    .pipe(browsersync.stream());
 }
 
 /* PDF */
 function assets() {
   return src(source + 'assets/*.*')
-    .pipe(dest(destination + 'assets'));
+    .pipe(dest(destination + 'assets'))
+    .pipe(browsersync.stream());
 }
 
 /* TASKS */
@@ -101,8 +129,12 @@ function watchFiles() {
   watch(source + 'css/*.css', css);
   watch(source + 'js/*.js', js);
   watch(source + 'img/*.*', img);
-  watch(source + 'html/**', html);
+  watch(source + 'html/**', html, browserSyncReload);
 }
+
+// Complex tasks
+const build = series(clean, parallel(html, css, js, vendorjs, vendorcss, fontawesomefonts, img, assets));
+const serve = series(build, parallel(watchFiles, browserSync));
 
 exports.html = html;
 exports.css = css;
@@ -112,7 +144,7 @@ exports.vendorcss = vendorcss;
 exports.fontawesomefonts = fontawesomefonts;
 exports.img = img;
 exports.assets = assets;
-const dev = parallel(html, css, js, vendorjs, vendorcss, fontawesomefonts, img, assets);
-exports.default = dev;
-exports.watch = parallel(dev, watchFiles);
-
+exports.clean = clean;
+exports.default = build;
+exports.build = build;
+exports.serve = serve;

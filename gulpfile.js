@@ -126,7 +126,7 @@ function assets() {
 
 // Watch files
 function watchFiles() {
-  watch(source + 'css/*.css', css);
+  watch(source + 'scss/*.scss', css);
   watch(source + 'js/*.js', js);
   watch(source + 'img/*.*', img);
   watch(source + 'html/**', html, browserSyncReload);

@@ -6,10 +6,13 @@ Feeding Good website
 
 ## Install
 
+* `git clone git@github.com:estellepicq/feedinggood.git`
 * `npm install`
-* `gulp`
 
-## Dev mode
+## Dev
 
-* `gulp watch`
-* Open index.html with live server
+* `npm run start`: watch src files and open browser on http://localhost:3000
+
+## Build
+
+* 

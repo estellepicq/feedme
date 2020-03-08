@@ -48,6 +48,10 @@ a:hover {
   color: var(--secondary-bg-color) !important;
 }
 
+.img-border {
+  border: 2px solid var(--main-bg-color);
+}
+
 /* SECTIONS */
 
 .introduction, .services {

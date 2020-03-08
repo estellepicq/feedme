@@ -20,8 +20,11 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.html">Feeding Good</a>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html">
+    <img src="img/logo.png" alt="Logo Feeding Good" width="60" height="70">
+    Feeding Good
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -34,6 +37,9 @@
       <li class="nav-item">
         <a class="nav-link" href="basics.html">Les Bases</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="recipes.html">Les Recettes</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Les FODMAPs
@@ -41,7 +47,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="fodmaps-description.html">Les FODMAPs, c'est quoi ?</a>
           <a class="dropdown-item" href="fodmaps-list.html">La liste des aliments</a>
-          <a class="dropdown-item" href="fodmaps-recipes.html">Les recettes</a>
+          <a class="dropdown-item" href="fodmaps-recipes.html">Recettes sans FODMAPs</a>
         </div>
       </li>
     </ul>
@@ -49,36 +55,20 @@
 </nav>
 
 
-  <div id="landing">
-    <div id="landing-image"></div>
-    <div id="landing-text">
-      <div id="landing-text-inner">
-        <h1>Alimentation</h1>
-        <span>&bull;</span>
-        <h1>Santé</h1>
-        <span>&bull;</span>
-        <h1>Bien-être</h1>
-      </div>
-    </div>
-  </div>
-
-  <!-- Introduction
-  <section class="introduction text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-9 mx-auto">
-          
-        </div>
-      </div>
-    </div>
-  </section> -->
+<div id="landing">
+  <h1>Alimentation</h1>
+  <span>&bull;</span>
+  <h1>Santé</h1>
+  <span>&bull;</span>
+  <h1>Bien-être</h1>
+</div>
 
   <section>
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
-            <img class="img-fluid" src="img/01.png" alt="">
+            <img class="img-fluid " src="img/01.png" alt="">
           </div>
         </div>
         <div class="col-lg-6 order-lg-1">
@@ -86,8 +76,8 @@
             <h2 class="display-4">Manger sainement, sans prise de tête</h2>
             <p>
               Régimes draconiens, chasse au gras et au sucre, recherche des "super-aliments" et de l'assiette parfaite... Stop !
-              Tu es perdu dans la jungle d'informations contradictoires qui circulent sur les réseaux sociaux ?
-              Pourtant, ce n'est pas si compliqué... Avec Feeding Good, on reprend les bases de l'alimentation !
+              Vous êtes perdu dans la jungle d'informations contradictoires qui circulent sur les réseaux sociaux ?
+              Pourtant, ce n'est pas si compliqué... Avec Feeding Good, <a href="basics.html">on reprend les bases de l'alimentation</a> !
             </p>
           </div>
         </div>
@@ -107,10 +97,10 @@
           <div class="p-5">
             <h2 class="display-4">Garder la santé et la ligne en se faisant plaisir</h2>
             <p>
-              Le système digestif joue un rôle fondamental dans notre santé. Tu veux en prendre soin, mais comment ?
+              Le système digestif joue un rôle fondamental dans notre santé. Vous voulez en prendre soin, mais comment ?
               Les légumes vapeurs c'est bien, mais les repas variés et savoureux c'est mieux ! Une alimentation saine ne doit pas forcément rimer avec monotonie.
-              Apprend à transformer des recettes simples en bons petits plats satisfaisants, et impressionner les collègues à la pause déjeuner !
-              Et parce que ça ne coûte pas plus cher de bien manger, tu vas même réaliser des économies.
+              Apprenez à transformer des recettes simples en <a href="recipes.html">bons petits plats satisfaisants</a>, et impressionner les collègues à la pause déjeuner !
+              Et parce que ça ne coûte pas plus cher de bien manger, vous allez même réaliser des économies.
             </p>
           </div>
         </div>
@@ -130,54 +120,16 @@
           <div class="p-5">
             <h2 class="display-4">Bienvenue sur Feeding Good</h2>
             <p>
-              Feeding Good te donne les clés pour maîtriser les bases d'une alimentation saine et équilibrée.
-              Une fois que tu auras appris (ou ré-appris) ces quelques concepts, tu pourras te débrouiller sans angoisse,
-              et venir t'inspirer des recettes partagées sur ce site.
-              C'est toi le chef 👨‍🍳 !
+              Feeding Good vous donne les clés pour maîtriser les <a href="basics.html">bases</a> d'une alimentation saine et équilibrée.
+              Une fois que vous aurez appris (ou ré-appris) ces quelques concepts, vous pourrez vous débrouiller sans angoisse,
+              et venir vous inspirer des <a href="recipes.html">recettes</a> partagées sur ce site.
+              C'est vous le chef 👨‍🍳 !
             </p>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Services grid
-  <section id="services" class="services bg-light text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <a href="basics.html">
-            <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-seedling fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading">Les bases</h4>
-            <p class="text-muted">Les clés d'une alimentation saine : comment manger équilibré, en toute simplicité.</p>
-          </a>
-        </div> 
-        <div class="col-md-4">
-          <a href="fodmaps-home.html">
-            <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-exclamation-triangle fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading">Les FODMAPs</h4>
-            <p class="text-muted">Tout ce qu'il faut savoir sur les FODMAPs et pourquoi y faire attention.</p>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a href="#">
-            <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-custom"></i>
-              <i class="fas fa-cookie-bite fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading">Les recettes</h4>
-            <p class="text-muted">Petit-déjeuner, plat, dessert... Pour se régaler en prenant soin de sa santé !</p>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
   <!-- Call to Action -->
 <!-- <section class="call-to-action text-white text-center" id="actionForm">

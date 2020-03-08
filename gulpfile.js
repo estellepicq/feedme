@@ -40,6 +40,7 @@ function html() {
   return src([
     source + 'html/*.html',
     source + 'html/basics/*.html',
+    source + 'html/recipes/*.html',
     source + 'html/fodmaps/*.html',
     source + 'html/components/*.html',
   ])

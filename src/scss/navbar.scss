@@ -1,46 +1,7 @@
 #landing {
-  color: #fff;
+  background-color: var(--main-bg-color);
+  color: white;
   box-shadow: 2px 2px 10px #ccc;
-
-  #landing-text {
-    background-color: var(--main-bg-color);
-    display: flex;
-    flex: 0 1 20vw;
-    height: 50vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-right: 1rem;
-    padding-left: 1rem;
-
-    h1 {
-      font-size: 2rem;
-    }
-  }
-
-  #landing-image {
-    background: url('../img/logo.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 50vh;
-    flex: 0 1 80vw;
-    margin: 0;
-  }
-}
-
-@media (min-width: 500px) {
-  #landing {
-    display: flex;
-  }
-}
-
-@media (max-width: 500px) {
-  #landing-text {
-    height: 20vh;
-  }
-
-  #landing-image {
-    height: 10vh;
-  }
+  height: 50vh;
+  padding-top: 9rem;
 }

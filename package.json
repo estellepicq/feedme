@@ -21,8 +21,12 @@
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "5.10.2",
 		"@lcluber/aiasjs": "^2.6.1",
+		"@lcluber/chjs": "^2.10.0",
 		"bootstrap": "4.3.1",
-		"jquery": "3.4.1"
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"jquery": "3.4.1",
+		"nodemailer": "^6.4.4"
 	},
 	"devDependencies": {
 		"browser-sync": "2.26.7",

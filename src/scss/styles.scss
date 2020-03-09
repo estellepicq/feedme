@@ -22,14 +22,21 @@ h6 {
 /* COLORS */
 
 .btn-custom {
-  background-color: var(--main-link-color);
+  background-color: var(--main-bg-color);
   color: #fff !important;
+
+  &:hover,
+  &:active {
+    background-color: var(--secondary-bg-color);
+    color: #fff !important;
+  }
+
+  &:disabled {
+    background-color: #aaa;
+  }
 }
 
-.btn-custom:hover, .btn-custom:active {
-  background-color: var(--secondary-bg-color);
-  color: #fff !important;
-}
+
 
 .text-custom {
   color: var(--main-bg-color);

@@ -24,12 +24,13 @@ contactBtn.addEventListener('click', function() {
     name: nameInput.value,
     email: emailInput.value,
     message: messageInput.value,
+    from: '[www.feedinggood.com]'
   };
   sendMail(contactBody);
 });
 
 function setBtnState() {
-  contactBtn.disabled = !nameInput.value || !emailInput.value || !messageInput.value;
+  contactBtn.disabled = !nameInput.value || !emailInput.value || !messageInput.value || !Ch.isEmail(emailInput.value);
 }
 
 function sendMail(contactBody) {

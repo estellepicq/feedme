@@ -5,7 +5,7 @@ var searchInput = document.getElementById('searchInput');
 
 // Load & display food items
 var foodItems;
-getFooodItems();
+getFoodItems();
 
 searchInput.addEventListener('keyup', function () {
 	var search = searchInput.value;
@@ -27,7 +27,7 @@ searchInput.addEventListener('keyup', function () {
 	});
 });
 
-function getFooodItems() {
+function getFoodItems() {
 	Aias.HTTP.GET('http://nutrimetrics.estellepicq.com/food?fodmaps=1', 'json')
 		.then(response => {
 			foodItems = response;
@@ -43,8 +43,7 @@ function displayList(items) {
 	items.forEach((item) => {
 		// Create element
 		var itemElt = document.createElement('div');
-		var cutoff = item.fodmaps_cutoff ? ' - ' + item.fodmaps_cutoff + ' max' : ''
-		itemElt.textContent = item.name + cutoff;
+		itemElt.innerHTML = createFoodItemTemplate(item);
 		itemElt.setAttribute('class', 'item');
 		// Find parent element
 		var category = item.fodmaps_category.toLowerCase().replace(/ /g, '');
@@ -80,15 +79,20 @@ function displayList(items) {
 }
 
 function displayFilteredList(items) {
-	var low = '<div class="indicator low"></div>';
-	var high = '<div class="indicator high"></div>';
 	items.forEach((item, index) => {
 		var itemElt = document.createElement('div');
-		var cutoff = item.fodmaps_cutoff ? ' - ' + item.fodmaps_cutoff + ' max' : '';
-		var indicator = item.fodmaps_indicator === 'low' ? low : high;
-		itemElt.innerHTML = indicator + item.name + cutoff;
+		itemElt.innerHTML = createFoodItemTemplate(item);;
 		itemElt.setAttribute('class', 'filtered-item');
 		itemElt.id = 'item_' + index;
 		filteredListElt.appendChild(itemElt);
 	});
+}
+
+function createFoodItemTemplate(item) {
+
+	var cutoff = item.fodmaps_cutoff ? ' - ' + item.fodmaps_cutoff + ' max' : '';
+	var low = '<div class="indicator low"></div>';
+	var high = '<div class="indicator high"></div>';
+	var indicator = item.fodmaps_indicator === 'low' ? low : high;
+	return indicator + item.name + cutoff;
 }

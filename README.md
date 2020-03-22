@@ -15,4 +15,4 @@ Feeding Good website
 
 ## Build
 
-* 
+* `npm run build`

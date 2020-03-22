@@ -13,7 +13,9 @@ app.use(bodyParser.json());
 
 // Routes
 var mail = require('./routes/mail');
+var signin = require('./routes/signin');
 app.use('/mail', mail);
+app.use('/signin', signin);
 
 // Public output folder
 app.use(serveStatic(__dirname + '/'));

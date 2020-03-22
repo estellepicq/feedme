@@ -3,7 +3,8 @@
 	"name": "feedinggood",
 	"version": "0.0.1",
 	"scripts": {
-		"start": "node_modules/.bin/gulp serve"
+		"start": "node_modules/.bin/gulp serve",
+		"build": "node_modules/.bin/gulp"
 	},
 	"description": "A landing page for Feeding Good",
 	"keywords": [

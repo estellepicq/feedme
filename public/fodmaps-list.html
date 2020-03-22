@@ -13,6 +13,7 @@
   <link href="../css/vendors.css" rel="stylesheet">
   <!-- Custom fonts  -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Coming+Soon&display=swap" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="../css/styles.min.css" rel="stylesheet">
 
@@ -24,7 +25,6 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.html">
     <img src="img/logo.png" alt="Logo Feeding Good" width="60" height="70">
-    Feeding Good
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
     <div id="list"></div>
     <div id="filteredList" class="col-md-11 mx-auto"></div>
     <div class="download">
-      <a class="btn btn-custom" href="../assets/FODMAPS.pdf" download>Téléchargez gratuitement la liste complète</a>
+      <a class="btn btn-custom" href="#" data-toggle="modal" data-target="#foodlistSigninModal">Téléchargez gratuitement la liste complète</a>
     </div>
   </section>
 
@@ -124,16 +124,6 @@
       </div>
       <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
         <ul class="list-inline mb-0">
-          <!-- <li class="list-inline-item mr-3">
-            <a href="#">
-              <i class="fab fa-facebook fa-2x fa-fw"></i>
-            </a>
-          </li>
-          <li class="list-inline-item mr-3">
-            <a href="#">
-              <i class="fab fa-twitter-square fa-2x fa-fw"></i>
-            </a>
-          </li> -->
           <li class="list-inline-item">
             <a href="#">
               <i class="fab fa-instagram fa-2x fa-fw"></i>
@@ -283,9 +273,42 @@
 <!-- Vendors -->
 <script src="../js/vendors.js"></script>
 <script src="../js/contact.min.js"></script>
+  <div class="modal fade" id="foodlistSigninModal" tabindex="-1" role="dialog" aria-labelledby="foodlistSigninModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="foodlistSigninModalLabel">Liste des aliments sans FODMAPs</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+<div class="modal-body">
+  <div id="signinFormContainer" class="contact-form-container">
+    <form class="flex-container direction-column">
+      <div class="form-field">
+        <input type="email" name="email" id="signinEmail" required>
+        <span class="bar"></span>
+        <label for="email">Votre Email*</label>
+      </div>
+    </form>
+    <button type="button" class="btn btn-custom btn-block" id="signinBtn" disabled>Envoyer</button>
+    <div id="signinErrorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
+  </div>
+  <div id="signinSuccessMessage" class="success-message">Vous allez recevoir la liste dans votre boîte mail dans quelques instants 👌</div>
+</div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- Custom JS -->
   <script src="../js/main.min.js"></script>
+  <script src="../js/signin.min.js"></script>
 
 </body>
 

@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
   --main-color: #ff7000;
   --secondary-color: #fb5e00;
-  --dark-color: #212529;
+  --dark-color: #6c757d;
 }
 
 body {
@@ -14,8 +14,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+h6,
+.lead {
+  font-family: 'Coming Soon', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
 }
 

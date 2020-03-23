@@ -4,7 +4,17 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 router.post('/', (req, res, next) => {
-	// Check if email exists in DB
+	global.db
+    .collection('subscribers')
+    .where("email", "==", req.body.email)
+    .get()
+    .then(function(documents) {
+				documents.forEach((doc) => {
+					console.log(doc.id, " => ", doc.data());
+				});
+			// Check if email exists in DB
+    })
+    .catch(error => console.log(error));
 	// Create
 	// Update
 	// Send mail with required document

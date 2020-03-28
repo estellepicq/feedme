@@ -128,7 +128,7 @@ function watchFiles() {
 }
 
 // Complex tasks
-const build = series(clean, parallel(html, css, js, vendorjs, vendorcss, fontawesomefonts, img, assets));
+const build = series(clean, parallel(html, css, js, vendorjs, vendorcss, fontawesomefonts, img));
 const serve = series(build, parallel(watchFiles, browserSync));
 
 exports.html = html;
@@ -138,7 +138,6 @@ exports.vendorjs = vendorjs;
 exports.vendorcss = vendorcss;
 exports.fontawesomefonts = fontawesomefonts;
 exports.img = img;
-exports.assets = assets;
 exports.clean = clean;
 exports.default = build;
 exports.build = build;

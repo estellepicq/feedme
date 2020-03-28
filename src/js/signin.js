@@ -9,7 +9,7 @@ signinEmailInput.addEventListener('keyup', function() {
 });
 
 signinBtn.addEventListener('click', function() {
-  var requiredDoc = signinBtn.getAttribute('data-download');
+  const requiredDoc = signinBtn.getAttribute('data-requiredDoc');
   signIn(signinEmailInput.value, requiredDoc);
 });
 

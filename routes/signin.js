@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-require('dotenv').config();
 const nodemailer = require('nodemailer');
+const smtpConfig = require('../config/nodemailer.json')
 
 router.post('/', (req, res, next) => {
 	const { email, requiredDoc } = req.body;
@@ -21,13 +21,13 @@ router.post('/', (req, res, next) => {
 						.doc(subscriber.id)
 						.set({ documents: [...subscriber.documents, requiredDoc] }, { merge: true })
 						.then(() => {
-							// res.send({ success: true, msg: 'subscriber updated' });
+							console.log('subscriber updated');
 						})
 						.catch(error => {
-							// res.send({ success: false, msg: error });
+							console.log(error);
 						});
 					} else {
-						// res.send({ success: true, msg: 'subscriber already has requiredDoc' });
+						console.log('subscriber already has requiredDoc');
 					}
 			} else {
 				// Create
@@ -35,33 +35,30 @@ router.post('/', (req, res, next) => {
 					.collection('subscribers')
 					.add({ email: email, documents: [requiredDoc] })
 					.then(() => {
-						// res.send({ success: true, msg: 'subscriber created' });
+						console.log('subscriber created');
 					})
 					.catch(error => {
-						// res.send({ success: false, msg: error });
+						console.log(error);
 					});
 			}
     })
 		.catch(error => console.log(error))
 		.finally(() => {
+			const possibleDocs = [
+				{ id: 'foodList', name: 'aliments riches et pauvres en FODMAPs' },
+				{ id: 'fodmapsRecipes', name: 'recettes pauvres en FODMAPs' },
+			];
+			const requiredDocName = possibleDocs.find(d => d.id === requiredDoc).name;
 			// Send mail with required document
-			console.log('send ' + requiredDoc + ' to ' + email);
 			const mailOptions = {
-				from: 'Estelle <no-reply@feedinggood.com>',
+				from: 'Estelle <estelle@estellepicq.com>',
 				to: email,
-				subject: 'Salut !',
-				text: 'voici ton document'
+				subject: '[Feeding Good] Bonjour !',
+				text: 'Voici la liste des ' + requiredDocName + ', j\'espère que cela pourra vous aider. Soignez-vous bien !',
+				attachments: [{ filename: requiredDoc + '.pdf', path: './assets/' + requiredDoc + '.pdf', contentType: 'application/pdf' }]
 			};
 		
-			const transporter = nodemailer.createTransport({
-				host: "ssl0.ovh.net",
-				port: 465,
-				secure: true,
-				auth: {
-					user: process.env.NODEMAILER_USER,
-					pass: process.env.NODEMAILER_PASS
-				}
-			});
+			const transporter = nodemailer.createTransport(smtpConfig);
 
 			transporter.sendMail(mailOptions, (error, info) => {
 				if (error) {

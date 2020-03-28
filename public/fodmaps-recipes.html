@@ -68,11 +68,38 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto text-center">
-          <h1 class="mb-5">Quelques recettes sans FODMAPs</h1>
-          <p class="lead">Recettes simples, saines, économiques et délicieuses !</p>
+          <h1 class="mb-5">Recettes sans FODMAPs</h1>
+          <p class="lead">Un peu d'inspiration pour des repas sans FODMAPs !</p>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto mt-3 text-center">
-          <p>Section en cours de construction : revenez dans un petit moment :)</p>
+          <p>
+            Une fois la liste des aliments à privilégier et à éviter connue, il n’est pas toujours facile de <b>trouver
+            l’inspiration</b>, et de s’organiser pour préparer de bons repas sans FODMAPs.
+          </p>
+          <p>
+            Vous trouverez donc ici un ebook regroupant <b>28 recettes de repas simples, sains et digestes</b>, petits-déjeuners compris.
+            Vous pourrez l'imprimer ou le conserver sur votre téléphone pour l'avoir toujours à portée de main.
+          </p>
+          <p>Les recettes sont <b>regroupées par saison</b>, car il est essentiel de choisir des aliments de
+            qualité et de maximiser ses chances d’en absorber le plus de nutriments (vitamines,
+            minéraux...).
+          </p>
+          <p>
+            <b>Une courgette achetée en juillet sera en effet bien meilleure</b> (non seulement pour la recette,
+            mais aussi pour l’organisme) qu’une courgette achetée en supermarché en plein mois de janvier. Privilégier les fruits et légumes de
+            saison est également important pour éviter un impact écologique néfaste.
+          </p>
+          <p>
+            La plupart de ces recettes sont très faciles à réaliser et peuvent être préparées à l’avance, par
+            exemple le weekend, afin d’avoir un <b>repas équilibré pour les pauses déjeuner au travail ou les
+            soirs pressés</b>.
+          </p>
+          <div class="download">
+            <img src="../img/fodmapsRecipes-mini.png" alt="miniature" width="150" class="img-thumbnail img-fluid d-block mx-auto mb-3">
+            <a class="btn btn-custom" href="#" data-toggle="modal" data-target="#fodmapsRecipesModal">
+              Je veux l'ebook de recettes sans FODMAPs !
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -274,6 +301,41 @@
 <script src="../js/vendors.js"></script>
 <script src="../js/contact.min.js"></script>
 
+  <div class="modal fade" id="fodmapsRecipesModal" tabindex="-1" role="dialog" aria-labelledby="fodmapsRecipesModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="fodmapsRecipesModalLabel">Liste des recettes sans FODMAPs</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+<div class="modal-body">
+  <div id="fodmapsRecipesSigninFormContainer" class="contact-form-container">
+    <form class="flex-container direction-column">
+      <div class="form-field">
+        <input type="email" name="email" id="fodmapsRecipesSigninEmail" required>
+        <span class="bar"></span>
+        <label for="email">Votre Email*</label>
+      </div>
+    </form>
+    <button type="button" class="btn btn-custom btn-block" id="fodmapsRecipesSigninBtn" data-requiredDoc="fodmapsRecipes" disabled>Envoyer</button>
+    <div id="fodmapsRecipesSigninErrorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
+  </div>
+  <div id="fodmapsRecipesSigninSuccessMessage" class="success-message">Vous allez recevoir la liste dans votre boîte mail dans quelques instants 👌</div>
+</div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </body>
+
+<script src="../js/signin.min.js"></script>
 
 </html>

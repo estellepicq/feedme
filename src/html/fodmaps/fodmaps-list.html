@@ -20,15 +20,15 @@
     </div>
     <div id="list"></div>
     <div id="filteredList" class="col-md-11 mx-auto"></div>
-    <div class="download">
-      <a class="btn btn-custom" href="#" data-toggle="modal" data-target="#foodlistSigninModal">Téléchargez gratuitement la liste complète</a>
+    <div class="download" data-toggle="modal" data-target="#foodListModal">
+      <img src="../img/foodList-mini.png" alt="miniature" width="150" class="img-thumbnail img-fluid d-block mx-auto mb-3">
+      <a class="btn btn-custom" href="#">Je veux la liste complète !</a>
     </div>
   </section>
 
   @@include('./src/html/structure/footer.html')
   @@include('./src/html/components/signin.html', {
-    "requiredDoc": "foodList",
-    "section": "foodlistSignin",
+    "section": "foodList",
     "sectionTitle": "Liste des aliments sans FODMAPs"
   })
 

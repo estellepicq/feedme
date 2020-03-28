@@ -117,13 +117,6 @@ function img() {
     .pipe(browsersync.stream());
 }
 
-/* PDF */
-function assets() {
-  return src(source + 'assets/*.*')
-    .pipe(dest(destination + 'assets'))
-    .pipe(browsersync.stream());
-}
-
 /* TASKS */
 
 // Watch files

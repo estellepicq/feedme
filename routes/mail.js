@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-require('dotenv').config();
 const nodemailer = require('nodemailer');
+const smtpConfig = require('../config/nodemailer.json')
 
 router.post('/send', (req, res, next) => {
   const mailOptions = {
@@ -11,15 +11,7 @@ router.post('/send', (req, res, next) => {
 		text: req.body.message
 	};
 
-	const transporter = nodemailer.createTransport({
-		host: "ssl0.ovh.net",
-		port: 465,
-		secure: true,
-		auth: {
-			user: process.env.NODEMAILER_USER,
-			pass: process.env.NODEMAILER_PASS
-		}
-	});
+	const transporter = nodemailer.createTransport(smtpConfig);
 
 	transporter.sendMail(mailOptions, (error, info) => {
 		if (error) {

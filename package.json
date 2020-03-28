@@ -3,8 +3,10 @@
 	"name": "feedinggood",
 	"version": "0.0.1",
 	"scripts": {
-		"start": "node_modules/.bin/gulp serve",
-		"build": "node_modules/.bin/gulp"
+		"start:front": "node_modules/.bin/gulp serve",
+		"start:back": "nodemon app",
+		"build": "node_modules/.bin/gulp",
+		"start": "concurrently \"npm run start:front\" \"npm run start:back\""
 	},
 	"description": "A landing page for Feeding Good",
 	"keywords": [
@@ -32,6 +34,7 @@
 	},
 	"devDependencies": {
 		"browser-sync": "2.26.7",
+		"concurrently": "^5.1.0",
 		"del": "^5.1.0",
 		"gulp": "4.0.2",
 		"gulp-clean-css": "4.2.0",

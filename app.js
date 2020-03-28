@@ -1,12 +1,24 @@
 var app = require('express')();
 var server = require('http').createServer(app);
 var serveStatic = require('serve-static');
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
+var firebaseAdmin = require("firebase-admin");
+var config = require('./config/config.json');
+var firebaseConfig = require('./config/firebase.json');
+var serviceAccount = require('./config/' + config.serviceAccountKey);
 
 var port = process.env.PORT || 8084;
 
 //Server is running
 console.log('feedinggood is running on localhost:' + port);
+
+// Init Firebase App
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(serviceAccount),
+  databaseURL: firebaseConfig.databaseURL
+});
+
+global.db = firebaseAdmin.firestore();
 
 // Body parser
 app.use(bodyParser.json());

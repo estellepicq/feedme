@@ -73,8 +73,9 @@
     </div>
     <div id="list"></div>
     <div id="filteredList" class="col-md-11 mx-auto"></div>
-    <div class="download">
-      <a class="btn btn-custom" href="#" data-toggle="modal" data-target="#foodlistSigninModal">Téléchargez gratuitement la liste complète</a>
+    <div class="download" data-toggle="modal" data-target="#foodListModal">
+      <img src="../img/foodList-mini.png" alt="miniature" width="150" class="img-thumbnail img-fluid d-block mx-auto mb-3">
+      <a class="btn btn-custom" href="#">Je veux la liste complète !</a>
     </div>
   </section>
 
@@ -273,29 +274,29 @@
 <!-- Vendors -->
 <script src="../js/vendors.js"></script>
 <script src="../js/contact.min.js"></script>
-  <div class="modal fade" id="foodlistSigninModal" tabindex="-1" role="dialog" aria-labelledby="foodlistSigninModalLabel" aria-hidden="true">
+  <div class="modal fade" id="foodListModal" tabindex="-1" role="dialog" aria-labelledby="foodListModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="foodlistSigninModalLabel">Liste des aliments sans FODMAPs</h5>
+        <h5 class="modal-title" id="foodListModalLabel">Liste des aliments sans FODMAPs</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
 <div class="modal-body">
-  <div id="signinFormContainer" class="contact-form-container">
+  <div id="foodListSigninFormContainer" class="contact-form-container">
     <form class="flex-container direction-column">
       <div class="form-field">
-        <input type="email" name="email" id="signinEmail" required>
+        <input type="email" name="email" id="foodListSigninEmail" required>
         <span class="bar"></span>
         <label for="email">Votre Email*</label>
       </div>
     </form>
-    <button type="button" class="btn btn-custom btn-block" id="signinBtn" data-requiredDoc="foodList" disabled>Envoyer</button>
-    <div id="signinErrorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
+    <button type="button" class="btn btn-custom btn-block" id="foodListSigninBtn" data-requiredDoc="foodList" disabled>Envoyer</button>
+    <div id="foodListSigninErrorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
   </div>
-  <div id="signinSuccessMessage" class="success-message">Vous allez recevoir la liste dans votre boîte mail dans quelques instants 👌</div>
+  <div id="foodListSigninSuccessMessage" class="success-message">Vous allez recevoir la liste dans votre boîte mail dans quelques instants 👌</div>
 </div>
 
       <div class="modal-footer">

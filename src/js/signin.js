@@ -1,23 +1,30 @@
-var signinFormContainer = document.getElementById('signinFormContainer');
-var signinBtn = document.getElementById('signinBtn');
-var signinEmailInput = document.getElementById('signinEmail');
-var signinErrorMessage = document.getElementById('signinErrorMessage');
-var signinSuccessMessage = document.getElementById('signinSuccessMessage');
+watchSigninForm('foodList');
+watchSigninForm('fodmapsRecipes');
 
-signinEmailInput.addEventListener('keyup', function() {
-  setBtnState();
-});
+function watchSigninForm(currentForm) {
+  var signinFormContainer = document.getElementById(currentForm + 'SigninFormContainer');
+  var signinBtn = document.getElementById(currentForm + 'SigninBtn');
+  var signinEmailInput = document.getElementById(currentForm + 'SigninEmail');
+  var signinErrorMessage = document.getElementById(currentForm + 'SigninErrorMessage');
+  var signinSuccessMessage = document.getElementById(currentForm + 'SigninSuccessMessage');
 
-signinBtn.addEventListener('click', function() {
-  const requiredDoc = signinBtn.getAttribute('data-requiredDoc');
-  signIn(signinEmailInput.value, requiredDoc);
-});
+  if (signinFormContainer) {
+    signinEmailInput.addEventListener('keyup', function() {
+      setBtnState(signinBtn, signinEmailInput.value);
+    });
 
-function setBtnState() {
-  signinBtn.disabled = !signinEmailInput.value || !Ch.isEmail(signinEmailInput.value);
+    signinBtn.addEventListener('click', function() {
+      var requiredDoc = signinBtn.getAttribute('data-requiredDoc');
+      signIn(signinEmailInput.value, requiredDoc, signinBtn, signinFormContainer, signinErrorMessage, signinSuccessMessage);
+    });
+  }
 }
 
-function signIn(email, requiredDoc) {
+function setBtnState(signinBtn, emailValue) {
+  signinBtn.disabled = !emailValue || !Ch.isEmail(emailValue);
+}
+
+function signIn(email, requiredDoc, signinBtn, signinFormContainer, signinErrorMessage, signinSuccessMessage) {
   signinBtn.disabled = true;
   Aias.HTTP.POST('/signin', 'json', { email, requiredDoc })
     .then(function(response) {
@@ -30,5 +37,6 @@ function signIn(email, requiredDoc) {
     })
     .catch(function(err) {
       signinErrorMessage.style.display = 'block';
+      signinBtn.disabled = false;
     });
 }

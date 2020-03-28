@@ -9,7 +9,8 @@ signinEmailInput.addEventListener('keyup', function() {
 });
 
 signinBtn.addEventListener('click', function() {
-  signIn(signinEmailInput.value, 'foodlist');
+  const requiredDoc = signinBtn.getAttribute('data-requiredDoc');
+  signIn(signinEmailInput.value, requiredDoc);
 });
 
 function setBtnState() {

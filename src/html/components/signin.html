@@ -1,4 +1,4 @@
-@@include('./src/html/structure/modal_header.html', { "section": "foodlistSignin", "sectionTitle": "Liste des aliments sans FODMAPs"})
+@@include('./src/html/structure/modal_header.html', { "section": "@@section", "sectionTitle": "@@sectionTitle"})
 
 <div class="modal-body">
   <div id="signinFormContainer" class="contact-form-container">
@@ -9,7 +9,7 @@
         <label for="email">Votre Email*</label>
       </div>
     </form>
-    <button type="button" class="btn btn-custom btn-block" id="signinBtn" disabled>Envoyer</button>
+    <button type="button" class="btn btn-custom btn-block" id="signinBtn" data-requiredDoc="@@requiredDoc" disabled>Envoyer</button>
     <div id="signinErrorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
   </div>
   <div id="signinSuccessMessage" class="success-message">Vous allez recevoir la liste dans votre boîte mail dans quelques instants 👌</div>

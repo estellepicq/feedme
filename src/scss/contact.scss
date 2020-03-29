@@ -101,9 +101,8 @@
 	display: none;
 }
 
-.error-message {
+.error-message, .info-message {
 	font-style: italic;
-	// color: var(--error-color);
 	margin-top: 10px;
 }
 

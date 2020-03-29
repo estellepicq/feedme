@@ -5,8 +5,12 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description"
+    content="Feeding Good est un site web de partage de recettes et conseils sur l'alimentation, ainsi que de ressources
+    concernant la digestion, les FODMAPs... Un seul objectif : se sentir bien !">
+  <meta name="author" content="Estelle - Feeding Good">
+  <meta name="keywords" content="Alimentation, FODMAP, Healthy, Food, Nutrition, Lifestyle, Sain, Recettes, Fermentation">
+
   <title>Feeding Good  - Recettes sans FODMAPs</title>
   <link rel="icon" type="image/png" href="../img/logo_draw.png" />
   <!-- Bootstrap core CSS -->
@@ -73,7 +77,7 @@
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto mt-3 text-center">
           <p>
-            Une fois la liste des aliments à privilégier et à éviter connue, il n’est pas toujours facile de <b>trouver
+            Une fois <a href="fodmaps-list.html">la liste des aliments</a> à privilégier et à éviter connue, il n’est pas toujours facile de <b>trouver
             l’inspiration</b>, et de s’organiser pour préparer de bons repas sans FODMAPs.
           </p>
           <p>
@@ -94,10 +98,10 @@
             exemple le weekend, afin d’avoir un <b>repas équilibré pour les pauses déjeuner au travail ou les
             soirs pressés</b>.
           </p>
-          <div class="download">
+          <div class="download" data-toggle="modal" data-target="#fodmapsRecipesModal">
             <img src="../img/fodmapsRecipes-mini.png" alt="miniature" width="150" class="img-thumbnail img-fluid d-block mx-auto mb-3">
-            <a class="btn btn-custom" href="#" data-toggle="modal" data-target="#fodmapsRecipesModal">
-              Je veux l'ebook de recettes sans FODMAPs !
+            <a class="btn btn-custom" href="#">
+              Recevoir mon ebook de recettes sans FODMAPs
             </a>
           </div>
         </div>
@@ -149,7 +153,7 @@
         </ul>
         <p class="text-muted small mb-4 mb-lg-0">&copy; Feeding Good 2020</p>
       </div>
-      <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+      <!-- <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
         <ul class="list-inline mb-0">
           <li class="list-inline-item">
             <a href="#">
@@ -157,7 +161,7 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </footer>
@@ -267,11 +271,7 @@
     Je souhaite aujourd'hui partager sur Feeding Good des conseils et des recettes afin de montrer qu'une alimentation saine peut être variée,
     savoureuse et s'inscrire dans une démarche écologique et de bien-être. Et surtout, que c'est simple, économique et à la portée de tous !
   </p>
-  <p>Vous pouvez également me suivre sur Instagram, où je poste régulièrement des recettes saines, délicieuses et très faciles à réaliser.</p>
-  <p>
-    Si vous souhaitez recevoir tout cela par mail, vous pouvez également vous inscrire à la newsletter Feeding Good : un mail hebdomadaire, avec un 
-    petit condensé des conseils et recettes de la semaine !
-  </p>
+  <!-- <p>Vous pouvez également me suivre sur Instagram, où je poste régulièrement des recettes saines, délicieuses et très faciles à réaliser.</p> -->
 
   <h5>Qui suis-je ?</h5>
 
@@ -285,7 +285,9 @@
     ni se préoccuper des actualités alarmantes sur tel ou tel aliment.
   </p>
   <p>
-    Si vous avez des questions, n'hésitez pas à me contacter via le formulaire sur ce site, ou bien sur Instagram, je serai ravie d'échanger avec vous.
+    Si vous avez des questions, n'hésitez pas à me contacter via le formulaire sur ce site,
+    <!-- ou bien sur Instagram, -->
+    je serai ravie d'échanger avec vous.
   </p>
 </div>
 
@@ -321,6 +323,7 @@
       </div>
     </form>
     <button type="button" class="btn btn-custom btn-block" id="fodmapsRecipesSigninBtn" data-requiredDoc="fodmapsRecipes" disabled>Envoyer</button>
+    <div class="info-message">* Pas d'inquiétude, votre adresse mail est utilisée uniquement pour vous envoyer le document.</div>
     <div id="fodmapsRecipesSigninErrorMessage" class="error-message">Une erreur est survenue, merci de réessayer dans quelques instants.</div>
   </div>
   <div id="fodmapsRecipesSigninSuccessMessage" class="success-message">Vous allez recevoir la liste dans votre boîte mail dans quelques instants 👌</div>

@@ -37,8 +37,6 @@ h6,
   }
 }
 
-
-
 .text-custom {
   color: var(--main-color);
 }
@@ -82,23 +80,6 @@ a:hover {
   }
 }
 
-.call-to-action {
-  position: relative;
-  background-color: var(--main-color);
-  padding-top: 7rem;
-  padding-bottom: 7rem;
-
-  .overlay {
-    position: absolute;
-    background-color: #212529;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0.3;
-  }
-}
-
 footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -108,4 +89,11 @@ footer.footer {
   padding: 40px;
   margin-top: 3rem;
   cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .display-4 {
+    font-size: 2rem;
+    text-align: center;
+  }
 }

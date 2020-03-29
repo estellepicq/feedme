@@ -11,7 +11,8 @@ Feeding Good website
 
 ## Dev
 
-* `npm run start`: watch src files and open browser on http://localhost:3000
+* `npm run front`: watch src files and open browser on http://localhost:3000
+* `npm run back` : start server
 
 ## Build
 

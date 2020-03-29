@@ -1,5 +1,8 @@
 #search {
-  
+  .legend {
+    margin-top: 20px;
+  }
+
   &.filtering #list {
     display: none;
   }

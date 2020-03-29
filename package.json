@@ -1,12 +1,11 @@
 {
 	"title": "Feeding Good",
 	"name": "feedinggood",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"scripts": {
-		"start:front": "node_modules/.bin/gulp serve",
-		"start:back": "nodemon app",
-		"build": "node_modules/.bin/gulp",
-		"start": "concurrently \"npm run start:front\" \"npm run start:back\""
+		"front": "node_modules/.bin/gulp serve",
+		"back": "nodemon app",
+		"build": "node_modules/.bin/gulp"
 	},
 	"description": "A landing page for Feeding Good",
 	"keywords": [

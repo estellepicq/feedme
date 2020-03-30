@@ -41,6 +41,7 @@ function getFoodItems() {
 		})
 		.catch(function(err) {
 			console.log("error", err);
+			noFoodMessage.textContent = 'Erreur dans la récupération des aliments 🤨'
 			displayNoFoodMessage();
 		});
 }

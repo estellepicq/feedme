@@ -3,6 +3,10 @@
     margin-top: 20px;
   }
 
+  #noFoodMessage {
+    display: none;
+  }
+
   &.filtering #list {
     display: none;
   }

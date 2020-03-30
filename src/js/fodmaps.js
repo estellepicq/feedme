@@ -2,14 +2,15 @@ var searchSection = document.getElementById('search');
 var listElt = document.getElementById('list');
 var filteredListElt = document.getElementById('filteredList');
 var searchInput = document.getElementById('searchInput');
+var noFoodMessage = document.getElementById('noFoodMessage');
 
 // Load & display food items
-var foodItems;
+var foodItems = [];
 getFoodItems();
 
 searchInput.addEventListener('keyup', function () {
 	var search = searchInput.value;
-	foodItems.forEach((foodItem, index) => {
+	foodItems.forEach(function(foodItem, index) {
 		var itemElt = document.getElementById('item_' + index);
 		if (searchInput.value) {
 			searchSection.classList.add('filtering');
@@ -29,18 +30,23 @@ searchInput.addEventListener('keyup', function () {
 
 function getFoodItems() {
 	Aias.HTTP.GET('http://nutrimetrics.estellepicq.com/food?fodmaps=1', 'json')
-		.then(response => {
-			foodItems = response;
-			displayList(foodItems);
-			displayFilteredList(foodItems);
+		.then(function(response) {
+			if (response && response.length) {
+				foodItems = response;
+				displayList(foodItems);
+				displayFilteredList(foodItems);
+			} else {
+				displayNoFoodMessage();
+			}
 		})
-		.catch(err => {
+		.catch(function(err) {
 			console.log("error", err);
+			displayNoFoodMessage();
 		});
 }
 
 function displayList(items) {
-	items.forEach((item) => {
+	items.forEach(function(item) {
 		// Create element
 		var itemElt = document.createElement('div');
 		itemElt.innerHTML = createFoodItemTemplate(item);
@@ -79,7 +85,7 @@ function displayList(items) {
 }
 
 function displayFilteredList(items) {
-	items.forEach((item, index) => {
+	items.forEach(function(item, index) {
 		var itemElt = document.createElement('div');
 		itemElt.innerHTML = createFoodItemTemplate(item);;
 		itemElt.setAttribute('class', 'filtered-item');
@@ -89,10 +95,13 @@ function displayFilteredList(items) {
 }
 
 function createFoodItemTemplate(item) {
-
 	var cutoff = item.fodmaps_cutoff ? ' - ' + item.fodmaps_cutoff + ' max' : '';
 	var low = '<div class="indicator low"></div>';
 	var high = '<div class="indicator high"></div>';
 	var indicator = item.fodmaps_indicator === 'low' ? low : high;
 	return indicator + item.name + cutoff;
+}
+
+function displayNoFoodMessage() {
+	noFoodMessage.style.display = 'block';
 }

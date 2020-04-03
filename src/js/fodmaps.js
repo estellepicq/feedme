@@ -36,18 +36,16 @@ function getFoodItems() {
 				displayList(foodItems);
 				displayFilteredList(foodItems);
 			} else {
-				displayNoFoodMessage();
+				displayNoFoodMessage('Etrange, aucun aliment trouvé.');
 			}
 		})
-		.catch(function(err) {
-			console.log("error", err);
-			noFoodMessage.textContent = 'Erreur dans la récupération des aliments 🤨'
-			displayNoFoodMessage();
+		.catch(function() {
+			displayNoFoodMessage('Oups, erreur dans la récupération des aliments.');
 		});
 }
 
-function displayList(items) {
-	items.forEach(function(item) {
+function displayList(allItems) {
+	allItems.forEach(function(item) {
 		// Create element
 		var itemElt = document.createElement('div');
 		itemElt.innerHTML = createFoodItemTemplate(item);
@@ -103,6 +101,7 @@ function createFoodItemTemplate(item) {
 	return indicator + item.name + cutoff;
 }
 
-function displayNoFoodMessage() {
+function displayNoFoodMessage(message) {
+	noFoodMessage.textContent = message;
 	noFoodMessage.style.display = 'block';
 }

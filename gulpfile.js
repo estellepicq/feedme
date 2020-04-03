@@ -4,6 +4,7 @@ const minify = require('gulp-minify');
 const concat = require('gulp-concat');
 const fileInclude = require('gulp-file-include');
 const sass = require('gulp-sass');
+const babel = require('gulp-babel');
 const del = require("del");
 const browsersync = require("browser-sync").create();
 
@@ -67,7 +68,10 @@ function css() {
 
 /* JAVASCRIPT */
 function js() {
-  return src(source + 'js/*.js')
+  return src([
+      source + 'js/*.js'
+    ])
+    .pipe(babel({presets: ['@babel/env']}))
     .pipe(minify({
       ext: {
         min: '.min.js'
@@ -98,6 +102,7 @@ function vendorjs() {
     'node_modules/@lcluber/chjs/dist/ch.iife.min.js',
     'node_modules/@lcluber/weejs/dist/wee.iife.min.js',
   ])
+    .pipe(babel({presets: ['@babel/env']}))
     .pipe(concat('vendors.js'))
     .pipe(dest(destination + 'js'));
 }

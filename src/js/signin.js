@@ -26,17 +26,20 @@ function setBtnState(signinBtn, emailValue) {
 
 function signIn(email, requiredDoc, signinBtn, signinFormContainer, signinErrorMessage, signinSuccessMessage) {
   signinBtn.disabled = true;
-  Aias.HTTP.POST('/signin', 'json', { email, requiredDoc })
-    .then(function(response) {
+  
+	Aias.HTTP.setEventType('observable');
+  Aias.HTTP.POST('/signin', 'json', { email, requiredDoc }).subscribe(
+    function(response) {
       if (response.success) {
         signinFormContainer.style.display = 'none';
         signinSuccessMessage.style.display = 'block';
       } else {
         signinErrorMessage.style.display = 'block';
       }
-    })
-    .catch(function(err) {
+    },
+    function(_error) {
       signinErrorMessage.style.display = 'block';
       signinBtn.disabled = false;
-    });
+    }
+  );
 }

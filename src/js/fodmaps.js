@@ -29,8 +29,9 @@ searchInput.addEventListener('keyup', function () {
 });
 
 function getFoodItems() {
-	Aias.HTTP.GET('http://nutrimetrics.estellepicq.com/food?fodmaps=1', 'json')
-		.then(function(response) {
+	Aias.HTTP.setEventType('observable');
+	Aias.HTTP.GET('http://nutrimetrics.estellepicq.com/food?fodmaps=1', 'json').subscribe(
+		function(response) {
 			if (response && response.length) {
 				foodItems = response;
 				displayList(foodItems);
@@ -38,10 +39,11 @@ function getFoodItems() {
 			} else {
 				displayNoFoodMessage('Etrange, aucun aliment trouvé.');
 			}
-		})
-		.catch(function() {
+		},
+		function(_error) {
 			displayNoFoodMessage('Oups, erreur dans la récupération des aliments.');
-		});
+		}
+	);
 }
 
 function displayList(allItems) {

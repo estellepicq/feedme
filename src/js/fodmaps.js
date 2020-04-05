@@ -29,21 +29,23 @@ searchInput.addEventListener('keyup', function () {
 });
 
 function getFoodItems() {
-	Aias.HTTP.setEventType('observable');
-	Aias.HTTP.GET('http://nutrimetrics.estellepicq.com/food?fodmaps=1', 'json').subscribe(
-		function(response) {
+	Aias.HTTP.GET('http://nutrimetrics.estellepicq.com/food?fodmaps=1', 'json')
+		.then(function(response) {
+			console.log(response);
 			if (response && response.length) {
-				foodItems = response;
+				// foodItems = response;
+				foodItems = Ch.isJson(response) ? JSON.parse(response) : response;
+				console.log(foodItems);
 				displayList(foodItems);
 				displayFilteredList(foodItems);
 			} else {
 				displayNoFoodMessage('Etrange, aucun aliment trouvé.');
 			}
-		},
-		function(_error) {
+		})
+		.catch(function(_error) {
+			console.log(_error);
 			displayNoFoodMessage('Oups, erreur dans la récupération des aliments.');
-		}
-	);
+		});
 }
 
 function displayList(allItems) {

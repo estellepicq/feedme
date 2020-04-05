@@ -35,18 +35,16 @@ function setBtnState() {
 
 function sendMail(contactBody) {
   contactBtn.disabled = true;
-	Aias.HTTP.setEventType('observable');
-  Aias.HTTP.POST('/mail/send', 'json', contactBody).subscribe(
-    function(response) {
+  Aias.HTTP.POST('/mail/send', 'json', contactBody)
+    .then(function(response) {
       if (response.success) {
         contactFormContainer.style.display = 'none';
         successMessage.style.display = 'block';
       } else {
         errorMessage.style.display = 'block';
       }
-    },
-    function(_error) {
+    })
+    .catch(function(_error) {
       errorMessage.style.display = 'block';
-    }
-  );
+    });
 }

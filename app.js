@@ -43,8 +43,19 @@ app.get('/', function (req, res) {
 // Pages
 app.get('/:page', function (req, res) {
   var page = req.params.page;
-  console.log(page);
-  res.render(req.params.page);
+  res.render(page);
+});
+
+// Recipes
+app.get('/recipes/:id', function (req, res) {
+  var id = req.params.id;
+  res.render('recipe-details', {
+    recipe: {
+      id: 123,
+      name: 'Banana Bread',
+      items: [{ name: 'banane', quantity: '2' }, { name: 'oeufs', quantity: '3' }]
+    }
+  });
 });
 
 // Public output folder

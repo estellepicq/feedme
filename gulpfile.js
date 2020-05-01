@@ -2,7 +2,7 @@ const rename = require('gulp-rename');
 const cleanCSS = require('gulp-clean-css');
 const minify = require('gulp-minify');
 const concat = require('gulp-concat');
-const fileInclude = require('gulp-file-include');
+// const fileInclude = require('gulp-file-include');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const del = require("del");
@@ -15,15 +15,15 @@ const source = './src/';
 const destination = './public/';
 
 // BrowserSync
-function browserSync(done) {
-  browsersync.init({
-    server: {
-      baseDir: "./public/"
-    },
-    port: 3000
-  });
-  done();
-}
+// function browserSync(done) {
+//   browsersync.init({
+//     server: {
+//       baseDir: "./public/"
+//     },
+//     port: 3000
+//   });
+//   done();
+// }
 
 // BrowserSync reload
 function browserSyncReload(done) {
@@ -34,23 +34,6 @@ function browserSyncReload(done) {
 // Clean public
 function clean() {
   return del(['./public/']);
-}
-
-/* HTML */
-function html() {
-  return src([
-    source + 'html/*.html',
-    source + 'html/basics/*.html',
-    source + 'html/recipes/*.html',
-    source + 'html/fodmaps/*.html',
-    source + 'html/components/*.html',
-  ])
-  .pipe(fileInclude({
-    prefix: '@@',
-    basepath: '@root'
-  }))
-  .pipe(dest(destination))
-  .pipe(browsersync.stream());
 }
 
 /* CSS */
@@ -78,6 +61,7 @@ function js() {
       },
       noSource: true
     }))
+    .pipe(concat('main.min.js'))
     .pipe(dest(destination + 'js'))
     .pipe(browsersync.stream());
 }
@@ -128,15 +112,14 @@ function img() {
 function watchFiles() {
   watch(source + 'scss/*.scss', css);
   watch(source + 'js/*.js', js);
-  watch(source + 'img/*.*', img);
-  watch(source + 'html/**', html, browserSyncReload);
+  watch(source + 'img/*.*', img, browserSyncReload);
+  // watch(source + 'html/**', html, browserSyncReload);
 }
 
 // Complex tasks
-const build = series(clean, parallel(html, css, js, vendorjs, vendorcss, fontawesomefonts, img));
+const build = series(clean, parallel(css, js, vendorjs, vendorcss, fontawesomefonts, img));
 const serve = series(build, parallel(watchFiles/*, browserSync*/));
 
-exports.html = html;
 exports.css = css;
 exports.js = js;
 exports.vendorjs = vendorjs;

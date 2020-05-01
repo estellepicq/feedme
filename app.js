@@ -6,6 +6,7 @@ var firebaseAdmin = require("firebase-admin");
 var config = require('./config/config.json');
 var firebaseConfig = require('./config/firebase.json');
 var serviceAccount = require('./config/' + config.serviceAccountKey);
+var path = require('path');
 
 var port = process.env.PORT || 8084;
 
@@ -35,6 +36,8 @@ app.use(serveStatic(__dirname + '/public'));
 
 // Serve index.html
 app.get('/', (req, res) => {
+  // console.log('coucou');
+  // res.sendFile(path.join(__dirname, '/public', 'index.html'));
   res.sendFile(__dirname + '/index.html');
 });
 

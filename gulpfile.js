@@ -134,7 +134,7 @@ function watchFiles() {
 
 // Complex tasks
 const build = series(clean, parallel(html, css, js, vendorjs, vendorcss, fontawesomefonts, img));
-const serve = series(build, parallel(watchFiles, browserSync));
+const serve = series(build, parallel(watchFiles/*, browserSync*/));
 
 exports.html = html;
 exports.css = css;

@@ -7,6 +7,7 @@ var config = require('./config/config.json');
 var firebaseConfig = require('./config/firebase.json');
 var serviceAccount = require('./config/' + config.serviceAccountKey);
 var path = require('path');
+var exphbs  = require('express-handlebars');
 
 var port = process.env.PORT || 8084;
 
@@ -30,16 +31,24 @@ var signin = require('./routes/signin');
 app.use('/mail', mail);
 app.use('/signin', signin);
 
-// Public output folder
-app.use(serveStatic(__dirname + '/'));
-app.use(serveStatic(__dirname + '/public'));
+// Handlebars
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
 
-// Serve index.html
-app.get('/', (req, res) => {
-  // console.log('coucou');
-  // res.sendFile(path.join(__dirname, '/public', 'index.html'));
-  res.sendFile(__dirname + '/index.html');
+// Home
+app.get('/', function (req, res) {
+  res.render('home');
 });
+
+// Pages
+app.get('/:page', function (req, res) {
+  var page = req.params.page;
+  console.log(page);
+  res.render(req.params.page);
+});
+
+// Public output folder
+app.use(serveStatic(__dirname + '/public'));
 
 // Server listen
 server.listen(port);

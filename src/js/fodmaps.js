@@ -4,38 +4,39 @@ var filteredListElt = document.getElementById('filteredList');
 var searchInput = document.getElementById('searchInput');
 var noFoodMessage = document.getElementById('noFoodMessage');
 
-// Load & display food items
-var foodItems = [];
-getFoodItems();
+if (searchInput) {
 
-searchInput.addEventListener('keyup', function () {
-	var search = searchInput.value;
-	foodItems.forEach(function(foodItem, index) {
-		var itemElt = document.getElementById('item_' + index);
-		if (searchInput.value) {
-			searchSection.classList.add('filtering');
-			if (foodItem.name.toLowerCase().includes(search.toLowerCase())) {
-				if (!itemElt.classList.contains('displayed')) {
-					itemElt.classList.add('displayed');
+	// Load & display food items
+	var foodItems = [];
+	getFoodItems();
+
+	searchInput.addEventListener('keyup', function () {
+		var search = searchInput.value;
+		foodItems.forEach(function(foodItem, index) {
+			var itemElt = document.getElementById('item_' + index);
+			if (searchInput.value) {
+				searchSection.classList.add('filtering');
+				if (foodItem.name.toLowerCase().includes(search.toLowerCase())) {
+					if (!itemElt.classList.contains('displayed')) {
+						itemElt.classList.add('displayed');
+					}
+				} else {
+					itemElt.classList.remove('displayed');
 				}
 			} else {
+				searchSection.classList.remove('filtering');
 				itemElt.classList.remove('displayed');
 			}
-		} else {
-			searchSection.classList.remove('filtering');
-			itemElt.classList.remove('displayed');
-		}
+		});
 	});
-});
+}
 
 function getFoodItems() {
-	Aias.HTTP.GET('http://nutrimetrics.estellepicq.com/food?fodmaps=1', 'json')
+	Aias.HTTP.GET('http://nutrimetrics.feedinggood.fr/food?fodmaps=1')
 		.then(function(response) {
-			console.log(response);
 			if (response && response.length) {
 				// foodItems = response;
 				foodItems = Ch.isJson(response) ? JSON.parse(response) : response;
-				console.log(foodItems);
 				displayList(foodItems);
 				displayFilteredList(foodItems);
 			} else {

@@ -6,9 +6,53 @@
       <input type="text" class="form-control" id="searchInput" aria-describedby="searchInput" placeholder="Filtrer...">
     </div>
   </div>
-  <div id="noFoodMessage" class="col-md-11 mx-auto"></div>
-  <div id="list"></div>
-  <div id="filteredList" class="col-md-11 mx-auto"></div>
+  {{#if success}}
+  <div id="list" class="col-md-11 mx-auto text-center">
+    {{#each data}}
+      <div class="category">
+        <h4>{{this.category}}</h4>
+        <div class="category-low mx-auto mb-4">
+          <h5>Pauvres en FODMAPs</h5>
+          {{#each this.low}}
+            <div class="item">
+              <div class="indicator low"></div>
+              {{this.name}}
+            </div>
+          {{/each}}
+        </div>
+        <div class="category-high mx-auto mb-4">
+          <h5>Riches en FODMAPs</h5>
+          {{#each this.high}}
+            <div class="item">
+              <div class="indicator high"></div>
+              {{this.name}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  {{else}}
+  <div class="col-md-11 mx-auto">
+    Oups, erreur dans la récupération des aliments.
+  </div>
+  {{/if}}
+  <div id="filteredList" class="col-md-11 mx-auto">
+    {{#each data}}
+      {{#each this.low}}
+      <div class="filtered-item">
+        <div class="indicator low"></div>
+        {{this.name}}
+      </div>
+      {{/each}}
+      {{#each this.high}}
+      <div class="filtered-item">
+        <div class="indicator high"></div>
+        {{this.name}}
+      </div>
+      {{/each}}
+    {{/each}}
+  </div>
   <hr>
   <div class="legend col-md-11 mx-auto">
     <h5>Légende</h5>

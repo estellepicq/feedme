@@ -7,12 +7,19 @@
     display: none;
   }
 
-  &.filtering #list {
-    display: none;
+  &.filtering {
+    #list {
+      display: none;
+    }
   }
   
-  &:not(.filtering) #list {
-    display: block;
+  &:not(.filtering) {
+    #list {
+      display: block;
+    }
+    .filtered-item {
+      display: none !important;
+    }
   }
   
   #list {

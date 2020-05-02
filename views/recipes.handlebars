@@ -1,13 +1,28 @@
+
 <section class="introduction text-center">
   <div class="container">
     <div class="row">
-      <div class="col-xl-9 mx-auto text-center">
-        <h1 class="mb-5">Recettes</h1>
+      <div class="col-xl-9 mx-auto text-center mb-5">
+        <h1 class="mb-3">Recettes</h1>
         <p class="lead">Recettes simples, saines, économiques et délicieuses !</p>
       </div>
-      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto mt-3 text-center">
-        <p>Section en cours de construction : revenez dans un petit moment :)</p>
-      </div>
+    </div>
+    <div class="row col-xl-9 mx-auto mt-4">
+      {{#if success}}
+        {{#each data}}
+          <div class="col-lg-4 col-md-6 mb-4">
+            <a class="recipe-card" href="/recipes/{{this.id}}">
+              <div class="recipe-header">
+                <h3>{{this.name}}</h3>
+                <p class="">{{this.description}}</p>
+              </div>
+              <div class="recipe-image" style="background-image:url('{{this.thumbnail}}')"></div>
+            </a>
+          </div>
+        {{/each}}
+        {{else}}
+        Oups, erreur lors de la récupération des recettes.
+      {{/if}}
     </div>
   </div>
   </div>

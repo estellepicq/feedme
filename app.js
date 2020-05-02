@@ -6,8 +6,8 @@ var firebaseAdmin = require("firebase-admin");
 var config = require('./config/config.json');
 var firebaseConfig = require('./config/firebase.json');
 var serviceAccount = require('./config/' + config.serviceAccountKey);
-var path = require('path');
 var exphbs = require('express-handlebars');
+var request = require('request');
 
 var port = process.env.PORT || 8084;
 
@@ -40,22 +40,76 @@ app.get('/', function (req, res) {
   res.render('home');
 });
 
-// Pages
-app.get('/:page', function (req, res) {
-  var page = req.params.page;
-  var data = getPageData(page);
-  var success = true;
-  res.render(page, { data, success });
+// Basics
+app.get('/basics', function (req, res) {
+  res.render('basics');
+});
+
+// Fodmaps Description
+app.get('/fodmaps-description', function (req, res) {
+  res.render('fodmaps-description');
+});
+
+// Fodmaps List
+app.get('/fodmaps-list', function (req, res) {
+  request('http://nutrimetrics.feedinggood.fr/food?fodmaps=1', { json: true }, (err, _res, body) => {
+    if (err) {
+      res.render('fodmaps-list', { data: [], success: false });
+    }
+    var data = body && body.length ? formatFodmapItems(body) : [];
+    console.log(data);
+    res.render('fodmaps-list', { data, success: true });
+  });
+});
+
+// Fodmaps Recipes
+app.get('/fodmaps-recipes', function (req, res) {
+  res.render('fodmaps-recipes');
 });
 
 // Recipes
+app.get('/recipes', function (req, res) {
+  // request('http://savr.estellepicq.com/recipes/all', { json: true }, (err, _res, body) => {
+  //   if (err) {
+  //     res.render('recipes', { data: [], success: false });
+  //   }
+  //   var data = body && body.length ? body : [];
+  //   console.log(data);
+  //   res.render('recipes', { data, success: true });
+  // });
+  res.render('recipes', {
+    success: true,
+    recipes: [
+      {
+        id: 123,
+        name: 'Banana Bread',
+        thumbnail: 'https://images.unsplash.com/photo-1587121269960-d9d68bfb6f12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+      },
+      {
+        id: 456,
+        name: 'Muffins protéinés',
+        thumbnail: 'https://images.unsplash.com/photo-1585601356536-270d51fe07a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80',
+      }
+    ]
+  });
+});
+
+// Recipe Details
 app.get('/recipes/:id', function (req, res) {
   var id = req.params.id;
   res.render('recipe-details', {
     recipe: {
       id: 123,
       name: 'Banana Bread',
-      items: [{ name: 'banane', quantity: '2' }, { name: 'oeufs', quantity: '3' }]
+      tags: ['Petit-déjeuner', 'Banane'],
+      description: 'Banana bread léger parfait pour le petit-déjeuner, Banana bread léger parfait pour le petit-déjeuner, Banana bread léger parfait pour le petit-déjeuner',
+      thumbnail: 'https://images.unsplash.com/photo-1587121269960-d9d68bfb6f12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+      items: ['2 bananes', '3 oeufs', '1 yaourt nature'],
+      instructions: ['écraser les bananes', 'tout mélanger', 'mettre au four'],
+      prepTime: 10,
+      totalTime: 50,
+      portions: 4,
+      difficulty: 'Facile'
     }
   });
 });
@@ -66,101 +120,20 @@ app.use(serveStatic(__dirname + '/public'));
 // Server listen
 server.listen(port);
 
-function getPageData(page) {
-  switch (page) {
-    case 'recipes': {
-      return [
-        {
-          id: 123,
-          name: 'Banana Bread',
-          description: 'Banana bread léger parfait pour le petit-déjeuner',
-          thumbnail: 'https://images.unsplash.com/photo-1587121269960-d9d68bfb6f12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-          items: [{ name: 'banane', quantity: '2' }, { name: 'oeufs', quantity: '3' }]
-        },
-        {
-          id: 456,
-          name: 'Muffins protéinés',
-          description: 'Un en cas protéiné pour les sportifs et les autres !',
-          thumbnail: 'https://images.unsplash.com/photo-1585601356536-270d51fe07a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80',
-          items: [{ name: 'farine de coco', quantity: '30 grammes' }, { name: 'oeufs', quantity: '2' }]
-        }
-      ];
+function formatFodmapItems(foodItems) {
+  var formattedFoodItems = [];
+  foodItems.forEach(foodItem => {
+    if (!formattedFoodItems.find(ffi => ffi.category === foodItem.fodmaps_category)) {
+      // Init Category
+      formattedFoodItems.push({
+        category: foodItem.fodmaps_category,
+        low: [],
+        high: [],
+      });
     }
-    case 'fodmaps-list': { // faire le formatage, penser à rajouter cutoff value dans le name
-      return [
-        {
-          category: 'Fruits',
-          low: [
-            {
-              "name": "Banane",
-              "fodmaps_category": "Fruits",
-              "fodmaps_indicator": "low",
-              "fodmaps_cutoff": "",
-              "has_gluten": 0,
-              "has_lactose": 0,
-              "is_vegetarian": 0,
-              "is_vegan": 0,
-              "seasons": ""
-            },
-          ],
-          high: [
-            {
-              "name": "Abricot",
-              "fodmaps_category": "Fruits",
-              "fodmaps_indicator": "high",
-              "fodmaps_cutoff": "",
-              "has_gluten": 0,
-              "has_lactose": 0,
-              "is_vegetarian": 1,
-              "is_vegan": 1,
-              "seasons": "6,7,8"
-            },
-            {
-              "name": "Ail séché, poudre",
-              "fodmaps_category": "Légumes",
-              "fodmaps_indicator": "high",
-              "fodmaps_cutoff": "",
-              "has_gluten": 0,
-              "has_lactose": 0,
-              "is_vegetarian": 1,
-              "is_vegan": 1,
-              "seasons": "5, 6, 7, 8, 9, 11, 12"
-            }
-          ],
-        },
-        {
-          category: 'Viande',
-          low: [
-            {
-              "name": "Agneau",
-              "fodmaps_category": "Protéines animales et végétales",
-              "fodmaps_indicator": "low",
-              "fodmaps_cutoff": "",
-              "has_gluten": 0,
-              "has_lactose": 0,
-              "is_vegetarian": 0,
-              "is_vegan": 0,
-              "seasons": ""
-            },
-          ],
-          high: [
-            {
-              "name": "Saucisse",
-              "fodmaps_category": "Protéines animales et végétales",
-              "fodmaps_indicator": "high",
-              "fodmaps_cutoff": "",
-              "has_gluten": 0,
-              "has_lactose": 0,
-              "is_vegetarian": 1,
-              "is_vegan": 1,
-              "seasons": "6,7,8"
-            }
-          ],
-        }
-      ];
-    }
-    default: {
-      return [];
-    }
-  }
+    var ffi = formattedFoodItems.find(ffi => ffi.category === foodItem.fodmaps_category);
+    foodItem.name += foodItem.fodmaps_cutoff ? ' - ' + foodItem.fodmaps_cutoff + ' max' : '';
+    ffi[foodItem.fodmaps_indicator].push(foodItem);
+  });
+  return formattedFoodItems;
 }

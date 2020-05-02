@@ -1,18 +1,61 @@
 {{#with recipe}}
-<section class="introduction text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-9 mx-auto text-center">
-        <h1 class="mb-5">{{name}}</h1>
-      </div>
-      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto mt-3 text-center">
-        {{!-- {{#each items}}
-          <li>{{this.name}}</li>
-        {{/each}} --}}
-        
+<div class="container">
+  <div class="recipe-container">
+    <div class="recipe-header">
+      <div class="recipe-image" style="background-image:url('{{thumbnail}}')"></div>
+      <div class="recipe-name">
+        <h1 class="recipe-header-name">{{name}}</h1>
+        <ul class="list-inline">
+          {{#each tags}}
+          <li class="list-inline-item">#{{this}}</li>
+          {{/each}}
+        </ul>
+        <div class="recipe-header-description">{{description}}</div>
       </div>
     </div>
+    <hr>
+    <ul class="list-inline">
+      <li class="list-inline-item col-xs-6 mr-4 text-center">
+        <div class="font-weight-bold"><i class="fas fa-clock fa-fw"></i>Préparation</div>
+        {{prepTime}} min
+      </li>
+      <li class="list-inline-item col-xs-6 mr-4 text-center">
+        <div class="font-weight-bold"><i class="far fa-clock fa-fw"></i>Total</div>
+        {{totalTime}} min
+      </li>
+      <li class="list-inline-item col-xs-6 mr-4 text-center">
+        <div class="font-weight-bold"><i class="fas fa-utensils fa-fw"></i>Portions</div>
+        {{portions}}
+      </li>
+      <li class="list-inline-item col-xs-6 mr-4 text-center">
+        <div class="font-weight-bold"><i class="fas fa-fire-alt fa-fw"></i>Difficulté</div>
+        {{difficulty}}
+      </li>
+    </ul>
+    <hr>
+    <div class="recipe-content">
+      <div class="recipe-ingredients">
+        <h2>Ingrédients</h2>
+        <ul class="list-group">
+          {{#each items}}
+          <li class="list-group-item">{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="recipe-instructions">
+        <h2>Instructions</h2>
+        <ol>
+          {{#each instructions}}
+          <li class="instruction-item">{{this}}</li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+    <div class="recipe-footer text-center">
+      <a type="button" class="btn btn-link" title="Imprimer">
+        <i class="fas fa-print fa-fw"></i>
+      </a>
+    </div>
   </div>
-  </div>
-</section>
+</div>
 {{/with}}

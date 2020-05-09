@@ -2,7 +2,7 @@
 <div class="container">
   <div class="recipe-container">
     <div class="recipe-header">
-      <div class="recipe-image" style="background-image:url('{{thumbnail}}')"></div>
+      <div class="recipe-image" style="background-image:url('{{pictureUrl}}')"></div>
       <div class="recipe-name">
         <h1 class="recipe-header-name">{{name}}</h1>
         <ul class="list-inline">
@@ -37,8 +37,8 @@
       <div class="recipe-ingredients">
         <h2>Ingrédients</h2>
         <ul class="list-group">
-          {{#each items}}
-          <li class="list-group-item">{{this}}</li>
+          {{#each ingredients}}
+          <li class="list-group-item">{{this.customName}}</li>
           {{/each}}
         </ul>
       </div>

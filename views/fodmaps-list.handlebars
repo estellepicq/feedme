@@ -1,0 +1,79 @@
+<section id="search" class="introduction text-center">
+  <h1 class="mb-5">Liste des aliments pauvres et riches en FODMAPs</h1>
+  <a class="btn btn-custom mb-5" href="#downloadList">Télécharger la liste</a>
+  <div class="col-md-11 mx-auto">
+    <div class="form-group">
+      <input type="text" class="form-control" id="searchInput" aria-describedby="searchInput" placeholder="Filtrer...">
+    </div>
+  </div>
+  {{#if success}}
+  <div id="list" class="col-md-11 mx-auto text-center">
+    {{#each data}}
+      <div class="category">
+        <h4>{{this.category}}</h4>
+        <div class="category-low mx-auto mb-4">
+          <h5>Pauvres en FODMAPs</h5>
+          {{#each this.low}}
+            <div class="item">
+              <div class="indicator low"></div>
+              {{this.name}}
+            </div>
+          {{/each}}
+        </div>
+        <div class="category-high mx-auto mb-4">
+          <h5>Riches en FODMAPs</h5>
+          {{#each this.high}}
+            <div class="item">
+              <div class="indicator high"></div>
+              {{this.name}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  {{else}}
+  <div class="col-md-11 mx-auto">
+    Oups, erreur dans la récupération des aliments.
+  </div>
+  {{/if}}
+  <div id="filteredList" class="col-md-11 mx-auto">
+    {{#each data}}
+      {{#each this.low}}
+      <div class="filtered-item">
+        <div class="indicator low"></div>
+        {{this.name}}
+      </div>
+      {{/each}}
+      {{#each this.high}}
+      <div class="filtered-item">
+        <div class="indicator high"></div>
+        {{this.name}}
+      </div>
+      {{/each}}
+    {{/each}}
+  </div>
+  <hr>
+  <div class="legend col-md-11 mx-auto">
+    <h5>Légende</h5>
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="indicator low"></div> : Aliment pauvre en FODMAPs
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="indicator high"></div> : Aliment riche en FODMAPs
+    </div>
+  </div>
+  <hr>
+  <div id="downloadList" class="download" data-toggle="modal" data-target="#foodListModal">
+    <h5>Télécharger la liste des aliments</h5>
+    <img src="../img/foodList-mini.png" alt="miniature" width="150"
+      class="img-thumbnail img-fluid d-block mx-auto mb-3">
+    <a class="btn btn-custom" href="#">Recevoir la liste au format PDF</a>
+  </div>
+  <hr>
+  <div class="next-section text-right mr-5">
+    <a class="btn btn-custom" href="/fodmaps-recipes">Les recettes sans FODMAPs</a>
+  </div>
+</section>
+
+{{> signin-list}}

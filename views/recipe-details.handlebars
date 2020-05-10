@@ -1,0 +1,94 @@
+<div class="container">
+  {{#with recipe}}
+  <div class="recipe-container">
+    <div class="recipe-header">
+      <div class="recipe-image" style="background-image:url('{{pictureUrl}}')"></div>
+      <div class="recipe-name">
+        <h1 class="recipe-header-name">{{name}}</h1>
+        <ul class="list-inline">
+          {{#each tags}}
+          <li class="list-inline-item">#{{this}}</li>
+          {{/each}}
+        </ul>
+        <div class="recipe-header-description">{{description}}</div>
+      </div>
+    </div>
+    <hr>
+    <ul class="list-inline">
+      <li class="list-inline-item col-xs-6 mr-4 text-center">
+        <div class="font-weight-bold"><i class="fas fa-clock fa-fw"></i>Préparation</div>
+        {{prepTime}} min
+      </li>
+      <li class="list-inline-item col-xs-6 mr-4 text-center">
+        <div class="font-weight-bold"><i class="far fa-clock fa-fw"></i>Total</div>
+        {{totalTime}} min
+      </li>
+      <li class="list-inline-item col-xs-6 mr-4 text-center">
+        <div class="font-weight-bold"><i class="fas fa-utensils fa-fw"></i>Portions</div>
+        {{portions}}
+      </li>
+      <li class="list-inline-item col-xs-6 mr-4 text-center">
+        <div class="font-weight-bold"><i class="fas fa-fire-alt fa-fw"></i>Difficulté</div>
+        {{difficulty}}
+      </li>
+    </ul>
+    <hr>
+    <div class="recipe-content">
+      <div class="recipe-ingredients">
+        <h2 class="text-center">Ingrédients</h2>
+        <ul class="list-group">
+          {{#each ingredients}}
+          <li class="list-group-item">{{this.customName}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="recipe-instructions">
+        <h2 class="text-center">Instructions</h2>
+        <ol>
+          {{#each instructions}}
+          <li class="instruction-item">{{this}}</li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+    <div class="recipe-footer text-center">
+      <a type="button" class="btn btn-link" id="printBtn" title="Imprimer" onclick="window.print()">
+        <i class="fas fa-print"></i>
+      </a>
+
+      <a class="btn btn-link" href="mailto:?subject=Recette Feeding Good - {{name}}&amp;body=Je te partage cette recette : http://www.feedinggood.fr/recipes/{{_id}}"
+        title="Partager via email">
+        <i class="fas fa-envelope"></i>
+      </a>
+
+      <a href="https://www.pinterest.com/pin/create/button/"
+        data-pin-do="buttonBookmark"
+        data-pin-custom="true"
+        data-pin-url="{{pictureUrl}}"
+        class="btn btn-link">
+        <i class="fab fa-pinterest" style="cursor: pointer;"></i>
+      </a>
+    </div>
+  </div>
+  {{/with}}
+
+  <div class="recipe-details-actions">
+
+    {{#if previousRecipe}}
+    <a href="/recipes/{{previousRecipe._id}}">
+      <i class="fas fa-arrow-left"></i>
+      {{previousRecipe.name}}
+    </a>
+    {{/if}}
+
+    <a type="button" class="btn btn-custom" href="/recipes">Toutes les recettes</a>
+
+    {{#if nextRecipe}}
+    <a href="/recipes/{{nextRecipe._id}}">
+      {{nextRecipe.name}}
+      <i class="fas fa-arrow-right"></i>
+    </a>
+    {{/if}}
+
+  </div>
+</div>

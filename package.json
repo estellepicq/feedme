@@ -1,7 +1,7 @@
 {
 	"title": "Feeding Good",
 	"name": "feedinggood",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"scripts": {
 		"start:front": "node_modules/.bin/gulp serve",
 		"start:back": "nodemon app",
@@ -25,13 +25,14 @@
 		"@fortawesome/fontawesome-free": "5.10.2",
 		"@lcluber/aiasjs": "^2.6.1",
 		"@lcluber/chjs": "^2.10.0",
-		"@lcluber/weejs": "^1.0.1",
 		"bootstrap": "4.3.1",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
+		"express-handlebars": "^4.0.4",
 		"firebase-admin": "^8.10.0",
 		"jquery": "3.4.1",
-		"nodemailer": "^6.4.4"
+		"nodemailer": "^6.4.4",
+		"request": "^2.88.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.0",

@@ -1,5 +1,5 @@
-{{#with recipe}}
 <div class="container">
+  {{#with recipe}}
   <div class="recipe-container">
     <div class="recipe-header">
       <div class="recipe-image" style="background-image:url('{{pictureUrl}}')"></div>
@@ -35,7 +35,7 @@
     <hr>
     <div class="recipe-content">
       <div class="recipe-ingredients">
-        <h2>Ingrédients</h2>
+        <h2 class="text-center">Ingrédients</h2>
         <ul class="list-group">
           {{#each ingredients}}
           <li class="list-group-item">{{this.customName}}</li>
@@ -43,7 +43,7 @@
         </ul>
       </div>
       <div class="recipe-instructions">
-        <h2>Instructions</h2>
+        <h2 class="text-center">Instructions</h2>
         <ol>
           {{#each instructions}}
           <li class="instruction-item">{{this}}</li>
@@ -52,10 +52,43 @@
       </div>
     </div>
     <div class="recipe-footer text-center">
-      <a type="button" class="btn btn-link" title="Imprimer">
-        <i class="fas fa-print fa-fw"></i>
+      <a type="button" class="btn btn-link" id="printBtn" title="Imprimer" onclick="window.print()">
+        <i class="fas fa-print"></i>
+      </a>
+
+      <a class="btn btn-link" href="mailto:?subject=Recette Feeding Good - {{name}}&amp;body=Je te partage cette recette : http://www.feedinggood.fr/recipes/{{_id}}"
+        title="Partager via email">
+        <i class="fas fa-envelope"></i>
+      </a>
+
+      <a href="https://www.pinterest.com/pin/create/button/"
+        data-pin-do="buttonBookmark"
+        data-pin-custom="true"
+        data-pin-url="{{pictureUrl}}"
+        class="btn btn-link">
+        <i class="fab fa-pinterest" style="cursor: pointer;"></i>
       </a>
     </div>
   </div>
+  {{/with}}
+
+  <div class="recipe-details-actions">
+
+    {{#if previousRecipe}}
+    <a href="/recipes/{{previousRecipe._id}}">
+      <i class="fas fa-arrow-left"></i>
+      {{previousRecipe.name}}
+    </a>
+    {{/if}}
+
+    <a type="button" class="btn btn-custom" href="/recipes">Toutes les recettes</a>
+
+    {{#if nextRecipe}}
+    <a href="/recipes/{{nextRecipe._id}}">
+      {{nextRecipe.name}}
+      <i class="fas fa-arrow-right"></i>
+    </a>
+    {{/if}}
+
+  </div>
 </div>
-{{/with}}

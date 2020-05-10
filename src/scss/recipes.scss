@@ -17,6 +17,7 @@
 
   .recipe-card-header {
     min-height: 110px;
+    padding: 10px;
   }
 
   .recipe-card-image {
@@ -80,5 +81,21 @@
 
   .recipe-footer {
     padding-top: 20px;
+  }
+}
+
+.recipe-details-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 425px) {
+  .recipe-container .recipe-content {
+    .recipe-ingredients,
+    .recipe-instructions {
+      width: 100%;
+      min-width: unset;
+    }
   }
 }

@@ -1,0 +1,18 @@
+@media print {
+
+  @page {
+    margin: 1cm;
+  }
+
+  .navbar,
+  #landing,
+  .footer,
+  .recipe-details-actions,
+  #printBtn {
+    display: none !important;
+  }
+
+  .recipe-container {
+    border: 1px solid #ddd;
+  }
+}

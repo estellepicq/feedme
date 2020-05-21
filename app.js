@@ -52,12 +52,11 @@ app.get('/fodmaps-description', function (req, res) {
 
 // Fodmaps List
 app.get('/fodmaps-list', function (req, res) {
-  request('http://nutrimetrics.feedinggood.fr/food?fodmaps=1', { json: true }, (err, _res, body) => {
+  request('http://nutrimetrics.feedinggood.fr/api/food?fodmaps=1', { json: true }, (err, _res, body) => {
     if (err) {
       res.render('fodmaps-list', { data: [], success: false });
     }
     var data = body && body.length ? formatFodmapItems(body) : [];
-    console.log(data);
     res.render('fodmaps-list', { data, success: true });
   });
 });

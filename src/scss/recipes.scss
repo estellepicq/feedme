@@ -13,6 +13,7 @@
 
   h3 {
     font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.25rem;
   }
 
   .recipe-card-header {
@@ -23,6 +24,7 @@
   .recipe-card-image {
     background-size: cover;
     flex-grow: 1;
+    border-radius: 0 0 16px 16px;
   }
 }
 

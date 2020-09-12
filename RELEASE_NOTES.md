@@ -1,3 +1,8 @@
+Version 0.1.3 (12/09/2020)
+-----------------------------
+* Get rid of blabla sections (basics and home sections)
+* Bye bye feedinggood.com
+
 Version 0.1.2 (10/05/2020)
 -----------------------------
 * Add a polyfill for classList method

@@ -24,7 +24,7 @@ contactBtn.addEventListener('click', function() {
     name: nameInput.value,
     email: emailInput.value,
     message: messageInput.value,
-    from: '[www.feedinggood.com]'
+    from: '[www.feedinggood.estellepicq.com]'
   };
   sendMail(contactBody);
 });

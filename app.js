@@ -37,7 +37,13 @@ app.set('view engine', 'handlebars');
 
 // Home
 app.get('/', function (req, res) {
-  res.render('home');
+  request('http://savr.estellepicq.com/recipes/exportable?limit=3', { json: true }, (err, _res, body) => {
+    if (err) {
+      res.render('home', { data: [], success: false });
+    }
+    const recipes = body && body.length ? body : [];
+    res.render('home', { recipes: recipes, success: true });
+  });
 });
 
 // Basics
@@ -52,7 +58,7 @@ app.get('/fodmaps-description', function (req, res) {
 
 // Fodmaps List
 app.get('/fodmaps-list', function (req, res) {
-  request('http://nutrimetrics.feedinggood.fr/api/food?fodmaps=1', { json: true }, (err, _res, body) => {
+  request('http://nutrimetrics.estellepicq.fr/api/food?fodmaps=1', { json: true }, (err, _res, body) => {
     if (err) {
       res.render('fodmaps-list', { data: [], success: false });
     }

@@ -10,11 +10,10 @@
         <div class="p-5">
           <h2 class="display-4">Manger sainement, sans prise de tête</h2>
           <p class="text-justify">
-            Régimes draconiens, chasse au gras et au sucre, recherche des "super-aliments" et de l'assiette
-            parfaite... Stop !
-            Vous êtes perdu.e dans la jungle d'informations contradictoires qui circulent sur les réseaux sociaux ?
-            Pourtant, ce n'est pas si compliqué... Avec Feeding Good, <a href="/basics">on reprend les bases de
-              l'alimentation</a> !
+            Hello ! Bienvenue sur Feeding Good. Je vous partage ici mes recettes préférées !
+            Je me concentre sur la réalisation de recettes saines et économiques,
+            afin de montrer qu'il n'est pas nécessaire de se ruiner pour bien manger.
+            Régalez-vous bien :) 
           </p>
         </div>
       </div>
@@ -25,46 +24,31 @@
 <section>
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-6">
-        <div class="p-5">
-          <img class="img-fluid" src="img/02.png" alt="">
+      <div class="col-lg-12">
+        <div class="row">
+          <img class="col-lg-3 img-fluid" src="img/03.png" alt="">
+          <h2 class="col-lg-9 display-4">Les dernières recettes</h2>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="p-5">
-          <h2 class="display-4">Garder la santé en se faisant plaisir</h2>
-          <p class="text-justify">
-            Le système digestif joue un rôle fondamental dans notre santé. Vous voulez en prendre soin, mais comment ?
-            Les légumes vapeurs c'est bien, mais les repas variés et savoureux c'est mieux ! Une alimentation saine ne
-            doit pas forcément rimer avec monotonie.
-            Apprenez à transformer des recettes simples en <a href="/recipes">bons petits plats satisfaisants</a>,
-            et impressionner les collègues à la pause déjeuner !
-            Et parce que ça ne coûte pas plus cher de bien manger, vous allez même réaliser des économies.
-          </p>
+      <div class="col-lg-12">
+        <div class="p-5 text-center">
+          <div class="row col-xl-9 mx-auto mt-4">
+          {{#if success}}
+            {{#each recipes}}
+              <div class="col-lg-4 col-md-6 mb-4">
+                <a class="recipe-card" href="/recipes/{{this._id}}">
+                  <div class="recipe-card-header">
+                    <h3>{{this.name}}</h3>
+                  </div>
+                  <div class="recipe-card-image" style="background-image:url('{{this.pictureUrl}}')"></div>
+                </a>
+              </div>
+            {{/each}}
+          {{else}}
+          Oups, erreur lors de la récupération des recettes.
+          {{/if}}
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5">
-          <img class="img-fluid" src="img/03.png" alt="">
-        </div>
-      </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Bienvenue sur Feeding Good</h2>
-          <p class="text-justify">
-            Feeding Good vous donne les clés pour maîtriser les <a href="/basics">bases</a> d'une alimentation
-            saine et équilibrée.
-            Une fois que vous aurez intégré ces quelques concepts, vous pourrez vous débrouiller sans angoisse,
-            et venir vous inspirer des <a href="/recipes">recettes</a> partagées sur ce site.
-            C'est vous le chef 👨‍🍳 !
-          </p>
+        <a type="button" class="btn btn-custom mx-auto" href="/recipes">Toutes les recettes</a>
         </div>
       </div>
     </div>

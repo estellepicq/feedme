@@ -84,7 +84,6 @@ function vendorjs() {
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
     'node_modules/@lcluber/aiasjs/dist/aias.iife.js',
     'node_modules/@lcluber/chjs/dist/ch.iife.min.js',
-    'node_modules/@lcluber/weejs/dist/wee.iife.min.js',
   ])
     .pipe(concat('vendors.min.js'))
     .pipe(dest(destination + 'js'));

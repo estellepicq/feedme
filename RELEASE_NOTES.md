@@ -1,3 +1,8 @@
+Version 0.1.4 (23/01/2021)
+-----------------------------
+* Remove first home section
+* Remove 'about' link
+
 Version 0.1.3 (12/09/2020)
 -----------------------------
 * Get rid of blabla sections (basics and home sections)

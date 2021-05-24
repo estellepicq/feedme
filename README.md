@@ -12,7 +12,7 @@ Feeding Good website
 ## Dev
 
 * `npm run start`: watch src files and server files
-* Go to http://localhost:8084
+* Go to http://localhost:8086
 
 ## Build
 

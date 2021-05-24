@@ -9,7 +9,7 @@ var serviceAccount = require('./config/' + config.serviceAccountKey);
 var exphbs = require('express-handlebars');
 var request = require('request');
 
-var port = process.env.PORT || 8084;
+var port = process.env.PORT || 8086;
 
 //Server is running
 console.log('feedinggood is running on localhost:' + port);

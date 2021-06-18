@@ -1,7 +1,7 @@
 Version 0.1.5 (18/06/2021)
 -----------------------------
 * Remove FODMAPs section
-
+* Restyle recipe details
 
   Version 0.1.4 (23/01/2021)
 -----------------------------

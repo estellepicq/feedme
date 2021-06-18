@@ -1,4 +1,9 @@
-Version 0.1.4 (23/01/2021)
+Version 0.1.5 (18/06/2021)
+-----------------------------
+* Remove FODMAPs section
+
+
+  Version 0.1.4 (23/01/2021)
 -----------------------------
 * Remove first home section
 * Remove 'about' link

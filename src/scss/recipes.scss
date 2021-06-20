@@ -12,7 +12,7 @@
   }
 
   h3 {
-    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.25rem;
   }
 
@@ -63,6 +63,7 @@
     background-color: #fcd7be;
     padding: 1rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
   }
 
@@ -94,10 +95,10 @@
         padding-bottom: 20px;
 
         &.instruction-item::marker {
-          font-family: 'Coming Soon','Helvetica Neue',Helvetica,Arial,sans-serif;
+          font-family: "Coming Soon", "Helvetica Neue", Helvetica, Arial, sans-serif;
           font-weight: 900;
           font-size: 1.5rem;
-      }
+        }
       }
     }
   }

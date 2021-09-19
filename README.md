@@ -1,8 +1,8 @@
-# Feeding Good
+# Feed Me
 
 ## Description
 
-Feeding Good website
+Feed Me website
 
 ## Install
 

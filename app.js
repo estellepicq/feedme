@@ -10,6 +10,8 @@ var exphbs = require('express-handlebars');
 var request = require('request');
 
 var port = process.env.PORT || 8086;
+// const savrUrl = 'savr.estellepicq.com';
+const savrUrl = 'localhost:8085';
 
 //Server is running
 console.log('feedinggood is running on localhost:' + port);
@@ -35,62 +37,37 @@ app.use('/signin', signin);
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-// Home
-app.get('/', function (req, res) {
-  request('http://savr.estellepicq.com/recipes/exportable?limit=3', { json: true }, (err, _res, body) => {
-    if (err) {
-      res.render('home', { data: [], success: false });
-      return;
-    }
-    const recipes = body && body.length ? body : [];
-    res.render('home', { recipes: recipes, success: true });
-  });
-});
-
-// Basics
-app.get('/basics', function (req, res) {
-  res.render('basics');
-});
-
-// // Fodmaps Description
-// app.get('/fodmaps-description', function (req, res) {
-//   res.render('fodmaps-description');
-// });
-
-// // Fodmaps List
-// app.get('/fodmaps-list', function (req, res) {
-//   request('http://nutrimetrics.estellepicq.fr/api/food?fodmaps=1', { json: true }, (err, _res, body) => {
-//     if (err) {
-//       console.log('err', err);
-//       res.render('fodmaps-list', { data: [], success: false });
-//     }
-//     console.log('coucou');
-//     var data = body && body.length ? formatFodmapItems(body) : [];
-//     res.render('fodmaps-list', { data, success: true });
-//   });
-// });
-
-// // Fodmaps Recipes
-// app.get('/fodmaps-recipes', function (req, res) {
-//   res.render('fodmaps-recipes');
-// });
-
 // Recipes
-app.get('/recipes', function (req, res) {
-  request('http://savr.estellepicq.com/recipes/exportable', { json: true }, (err, _res, body) => {
+app.get('/', function (req, res) {
+  request(`http://${savrUrl}/recipes/exportable`, { json: true, qs: req.query }, (err, _res, body) => {
+    let msg = '';
+    if (req.query && Object.keys(req.query).length) {
+      msg += '- ';
+      for (const prop in req.query) {
+        const field = QUERY_MAPPING[prop];
+        if (field && req.query[prop]) {
+          const txt = field.label;
+          const value = field.values && field.values.find(v => v.id === req.query[prop]) ?
+            field.values.find(v => v.id === req.query[prop]).label :
+            req.query[prop];
+          msg += txt + ' : ' + value + ' - ';
+        }
+      }
+    }
+    const resultsLength = body ? body.length : 0;
     if (err) {
-      res.render('recipes', { data: [], success: false });
+      res.render('recipes', { recipes: [], success: false, msg });
       return;
     }
-    const recipes = body && body.length ? body : [];
-    res.render('recipes', { recipes: recipes, success: true });
+    const recipes = resultsLength ? body : [];
+    res.render('recipes', { recipes: recipes, success: true, msg, noData: resultsLength === 0 });
   });
 });
 
 // Recipe Details
 app.get('/recipes/:id', function (req, res) {
   var id = req.params.id;
-  request('http://savr.estellepicq.com/recipes/exportable', { json: true }, (err, _res, body) => {
+  request(`http://${savrUrl}/recipes/exportable`, { json: true }, (err, _res, body) => {
     if (err) {
       res.render('recipes', { data: [], success: false });
       return;
@@ -108,20 +85,37 @@ app.use(serveStatic(__dirname + '/public'));
 // Server listen
 server.listen(port);
 
-// function formatFodmapItems(foodItems) {
-//   var formattedFoodItems = [];
-//   foodItems.forEach(foodItem => {
-//     if (!formattedFoodItems.find(ffi => ffi.category === foodItem.fodmaps_category)) {
-//       // Init Category
-//       formattedFoodItems.push({
-//         category: foodItem.fodmaps_category,
-//         low: [],
-//         high: [],
-//       });
-//     }
-//     var ffi = formattedFoodItems.find(ffi => ffi.category === foodItem.fodmaps_category);
-//     foodItem.name += foodItem.fodmaps_cutoff ? ' - ' + foodItem.fodmaps_cutoff + ' max' : '';
-//     ffi[foodItem.fodmaps_indicator].push(foodItem);
-//   });
-//   return formattedFoodItems;
-// }
+
+const QUERY_MAPPING = {
+  searchText: {
+    label: 'Recherche'
+  },
+  difficulty: {
+    label: 'Difficulté',
+    values: [{ id: 'Facile', label: 'Facile'}, { id: 'Moyen', label: 'Moyen'}, { id: 'Difficile', label: 'Difficile'}]
+  },
+  totalTime: {
+    label: 'Temps de préparation',
+    values: [
+      { id: 'to30', label: 'Moins de 30 minutes' },
+      { id: 'from30to60', label: 'Entre 30 minutes et 1 heure' },
+      { id: 'from60', label: 'Plus de 1 heure' }
+    ]
+  },
+  energy: {
+    label: 'Calories',
+    values: [
+      { id: 'to400', label: 'Moins de 400 kcal' },
+      { id: 'from400to800', label: 'Entre 400 et 800 kcal' },
+      { id: 'from800', label: 'Plus de 800 kcal' }
+    ]
+  },
+  proteins: {
+    label: 'Protéines',
+    values: [
+      { id: 'to20', label: 'Moins de 20 g' },
+      { id: 'from20to40', label: 'Entre 20 et 40 g' },
+      { id: 'from40', label: 'Plus de 40 g' }
+    ]
+  }
+};

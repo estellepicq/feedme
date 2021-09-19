@@ -2,14 +2,17 @@
   {{#with recipe}}
   <div class="recipe-container">
     <div class="recipe-header">
-      <div class="recipe-image" style="background-image:url('{{pictureUrl}}')"></div>
+      <div class="recipe-image" style="background-image:url('http://savr.estellepicq.com/recipe_pictures/{{this.pictureName}}')"></div>
       <div class="recipe-name">
         <h1 class="recipe-header-name">{{name}}</h1>
-        <ul class="list-inline">
+        {{#if authorName}}
+        <div class="small">par {{ authorName }}</div>
+        {{#if}}
+        <div class="mb-3">
           {{#each tags}}
-          <li class="list-inline-item">#{{this}}</li>
+          <span class="badge badge-warning">#{{this}}</li>
           {{/each}}
-        </ul>
+        </div>
         <div class="recipe-header-description">{{description}}</div>
         <div class="nutrimetrics-link">
           <a href="http://nutrimetrics.estellepicq.com/recipes/{{_id}}" target="_blank" class="btn btn-custom">
@@ -79,7 +82,7 @@
         <i class="fas fa-print"></i>
       </a>
 
-      <a class="btn btn-link" href="mailto:?subject=Recette Feeding Good - {{name}}&amp;body=Je te partage cette recette : http://www.feedinggood.estellepicq.com/recipes/{{_id}}"
+      <a class="btn btn-link" href="mailto:?subject=Recette Feed Me - {{name}}&amp;body=Je te partage cette recette : http://www.feedinggood.estellepicq.com/recipes/{{_id}}"
         title="Partager via email">
         <i class="fas fa-envelope"></i>
       </a>

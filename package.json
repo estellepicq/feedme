@@ -1,14 +1,14 @@
 {
-	"title": "Feeding Good",
-	"name": "feedinggood",
-	"version": "0.1.5",
+	"title": "Feed Me",
+	"name": "feedme",
+	"version": "0.2.0",
 	"scripts": {
 		"start:front": "node_modules/.bin/gulp serve",
 		"start:back": "nodemon app",
 		"start": "concurrently \"npm run start:front\" \"npm run start:back\"",
 		"build": "node_modules/.bin/gulp"
 	},
-	"description": "A landing page for Feeding Good",
+	"description": "Feed me website",
 	"keywords": [
 		"nutrition",
 		"feelgood",
@@ -22,9 +22,9 @@
 		"url": ""
 	},
 	"dependencies": {
+		"@dwtechs/checkhard": "^2.16.0",
 		"@fortawesome/fontawesome-free": "5.10.2",
 		"@lcluber/aiasjs": "^2.7.3",
-		"@lcluber/chjs": "^2.11.0",
 		"bootstrap": "4.3.1",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",

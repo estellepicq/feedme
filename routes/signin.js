@@ -53,7 +53,7 @@ router.post('/', (req, res, next) => {
 			const mailOptions = {
 				from: 'Estelle <estelle@estellepicq.com>',
 				to: email,
-				subject: '[Feeding Good] Bonjour !',
+				subject: '[Feed Me] Bonjour !',
 				text: 'Voici la liste des ' + requiredDocName + ', j\'espère que cela pourra vous aider. Soignez-vous bien !',
 				attachments: [{ filename: requiredDoc + '.pdf', path: './assets/' + requiredDoc + '.pdf', contentType: 'application/pdf' }]
 			};

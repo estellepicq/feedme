@@ -2,20 +2,40 @@
 <section class="introduction text-center">
   <div class="container">
     <div class="row">
-      <div class="col-xl-9 mx-auto text-center mb-5">
-        <h1 class="mb-3">Recettes</h1>
-        <p class="lead">Recettes simples, saines, économiques et délicieuses !</p>
+      <div class="col-md-2">
+        <img class="img-fluid" src="img/03.png" alt="">
+      </div>
+      <div class="col-md-8 mx-auto text-center mb-5">
+        {{> search-bar}}
+        {{#if this.msg}}
+        <span class="text-secondary mt-3">
+          {{ this.msg }}
+          <a href="/" title="Réinitialiser">
+            <i class="fas fa-times"></i>
+          </a>
+        </span>
+        {{/if}}
       </div>
     </div>
     <div class="row col-xl-9 mx-auto mt-4">
       {{#if success}}
+        {{#if noData}}
+          <div class="lead text-center w-100">Aucune recette trouvée</div>
+        {{/if}}
         {{#each recipes}}
           <div class="col-lg-4 col-md-6 mb-4">
             <a class="recipe-card" href="/recipes/{{this._id}}">
               <div class="recipe-card-header">
-                <h3>{{this.name}}</h3>
+                <h3 class="mb-0">{{this.name}}</h3>
+                {{#if this.authorName}}
+                <div class="small">par {{ this.authorName }}</div>
+                {{/if}}
+                 {{#each this.tags}}
+                 <span class="badge badge-warning">#{{ this }}</span>
+                 {{/each}}
               </div>
-              <div class="recipe-card-image" style="background-image:url('{{this.pictureUrl}}')"></div>
+              <div class="recipe-card-image" style="background-image:url('http://savr.estellepicq.com/recipe_pictures/{{this.pictureName}}')">
+              </div>
             </a>
           </div>
         {{/each}}

@@ -1,9 +1,10 @@
 #landing {
-  height: 50vh;
-  margin-top: 90px;
+  height: 20vh;
+  display: block;
   background: url('../img/banner.png');
   background-position: right;
   background-size: cover;
+  text-decoration: none;
 
   .landing-text {
     padding-left: 3rem;

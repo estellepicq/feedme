@@ -1,0 +1,64 @@
+  <div class="input-group">
+
+    <input type="text"
+      name="feedmeSearchInput"
+      class="form-control bg-light border-0"
+      placeholder="Rechercher par nom, ingrédient, tag..."
+      id="searchInput">
+
+    <div class="input-group-append">
+
+      <button class="btn btn-light"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapseFilters"
+        aria-expanded="false"
+        aria-controls="collapseFilters">
+        <i class="fas fa-sliders-h fa-sm"></i>
+      </button>
+  
+      <a class="btn btn-warning text-light"
+        type="submit"
+        id="searchApplyBtn"
+        href="#"
+        onclick="redirectSearchUrl();return false;">
+        <i class="fas fa-search fa-sm"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="collapse border" id="collapseFilters">
+    <div class="p-3 text-center border-bottom">
+      <h6>Difficulté</h6>
+      <div>
+        <button id="difficulty_Facile" class="btn btn-outline-warning mr-2" onclick="selectSetting('difficulty', 'Facile')">Facile</button>
+        <button id="difficulty_Moyen" class="btn btn-outline-warning mr-2" onclick="selectSetting('difficulty', 'Moyen')">Moyen</button>
+        <button id="difficulty_Difficile" class="btn btn-outline-warning mr-2" onclick="selectSetting('difficulty', 'Difficile')">Difficile</button>
+      </div>
+    </div>
+    <div class="p-3 text-center border-bottom">
+      <h6>Temps de préparation</h6>
+      <div>
+        <button id="totalTime_to30" class="btn btn-outline-warning mr-2" onclick="selectSetting('totalTime', 'to30')">Moins de 30 minutes</button>
+        <button id="totalTime_from30to60" class="btn btn-outline-warning mr-2" onclick="selectSetting('totalTime', 'from30to60')">Entre 30 minutes et 1 heure</button>
+        <button id="totalTime_from60" class="btn btn-outline-warning mr-2" onclick="selectSetting('totalTime', 'from60')">Plus de 1 heure</button>
+      </div>
+    </div>
+    <div class="p-3 text-center border-bottom">
+      <h6>Calories (kcal)</h6>
+      <div>
+        <button id="energy_to400" class="btn btn-outline-warning mr-2" onclick="selectSetting('energy', 'to400')">Moins de 400</button>
+        <button id="energy_from400to800" class="btn btn-outline-warning mr-2" onclick="selectSetting('energy', 'from400to800')">Entre 400 et 800</button>
+        <button id="energy_from800" class="btn btn-outline-warning mr-2" onclick="selectSetting('energy', 'from800')">Plus de 800</button>
+      </div>
+    </div>
+    <div class="p-3 text-center">
+      <h6>Protéines (g)</h6>
+      <div>
+        <button id="proteins_to20" class="btn btn-outline-warning mr-2" onclick="selectSetting('proteins', 'to20')">Moins de 20</button>
+        <button id="proteins_from20to40" class="btn btn-outline-warning mr-2" onclick="selectSetting('proteins', 'from20to40')">Entre 20 et 40</button>
+        <button id="proteins_from40" class="btn btn-outline-warning mr-2" onclick="selectSetting('proteins', 'from40')">Plus de 40</button>
+      </div>
+    </div>
+    <button class="btn btn-warning mb-3" onclick="applyFilters()">Appliquer</button>
+  </div>

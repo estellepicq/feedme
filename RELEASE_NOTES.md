@@ -1,3 +1,7 @@
+Version 0.2.0 (19/09/2021)
+-----------------------------
+* Only keep recipes page, marmiton style for shared recipes
+
 Version 0.1.5 (18/06/2021)
 -----------------------------
 * Remove FODMAPs section

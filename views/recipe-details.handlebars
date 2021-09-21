@@ -2,12 +2,12 @@
   {{#with recipe}}
   <div class="recipe-container">
     <div class="recipe-header">
-      <div class="recipe-image" style="background-image:url('http://savr.estellepicq.com/recipe_pictures/{{this.pictureName}}')"></div>
+      <div class="recipe-image" style="background-image:url('http://localhost:8085/recipe_pictures/{{this.pictureName}}')"></div>
       <div class="recipe-name">
         <h1 class="recipe-header-name">{{name}}</h1>
         {{#if authorName}}
         <div class="small">par {{ authorName }}</div>
-        {{#if}}
+        {{/if}}
         <div class="mb-3">
           {{#each tags}}
           <span class="badge badge-warning">#{{this}}</li>

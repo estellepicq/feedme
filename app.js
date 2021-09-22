@@ -14,7 +14,7 @@ var port = process.env.PORT || 8086;
 const savrUrl = 'localhost:8085';
 
 //Server is running
-console.log('feedinggood is running on localhost:' + port);
+console.log('feedme is running on localhost:' + port);
 
 // Init Firebase App
 firebaseAdmin.initializeApp({

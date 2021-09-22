@@ -6,7 +6,7 @@ Feed Me website
 
 ## Install
 
-* `git clone git@github.com:estellepicq/feedinggood.git`
+* `git clone git@github.com:estellepicq/feedme.git`
 * `npm install`
 
 ## Dev

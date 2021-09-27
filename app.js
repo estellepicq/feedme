@@ -79,6 +79,10 @@ app.get('/recipes/:id', function (req, res) {
   });
 });
 
+app.get('/map', function (req, res) {
+  res.render('map');
+});
+
 // Public output folder
 app.use(serveStatic(__dirname + '/public'));
 

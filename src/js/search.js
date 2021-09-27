@@ -1,11 +1,12 @@
 var searchInput = document.getElementById('searchInput');
-
-searchInput.addEventListener('keydown', function(event) {
-  if (event.code === 'Enter') {
-    event.preventDefault();
-    redirectSearchUrl();
-  }
-});
+if (searchInput) {
+  searchInput.addEventListener('keydown', function(event) {
+    if (event.code === 'Enter') {
+      event.preventDefault();
+      redirectSearchUrl();
+    }
+  });
+}
 
 function redirectSearchUrl(selectedFilters) {
   var url = '/?searchText=' + searchInput.value.toLowerCase();

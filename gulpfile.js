@@ -71,7 +71,8 @@ function js() {
 function vendorcss() {
   return src([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
-    'node_modules/@fortawesome/fontawesome-free/css/all.min.css'
+    'node_modules/@fortawesome/fontawesome-free/css/all.min.css',
+    'node_modules/mapbox-gl/dist/mapbox-gl.css'
   ])
     .pipe(concat('vendors.css'))
     .pipe(dest(destination + 'css'));
@@ -84,6 +85,7 @@ function vendorjs() {
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
     'node_modules/@lcluber/aiasjs/dist/aias.iife.js',
     'node_modules/@dwtechs/checkhard/dist/ch.iife.min.js',
+    'node_modules/mapbox-gl/dist/mapbox-gl.js'
   ])
     .pipe(concat('vendors.min.js'))
     .pipe(dest(destination + 'js'));

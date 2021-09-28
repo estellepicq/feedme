@@ -3,3 +3,13 @@
   height: 500px;
   margin: 3rem auto;
 }
+
+.mapboxgl-marker {
+  cursor: pointer;
+}
+
+.mapboxgl-popup-content {
+  a:focus-visible {
+    outline: none;
+  }
+}

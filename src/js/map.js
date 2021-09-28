@@ -4,21 +4,21 @@ if (document.getElementById('map')) {
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [2.597737934632275, 46.62615880227343], // starting position [lng, lat]
-    zoom: 4 // starting zoom
+    zoom: 1 // starting zoom
   });
 
-  // Create a default Marker and add it to the map.
-  const marker1 = new mapboxgl.Marker()
-    .setLngLat([-0.5867988938266372, 44.83963850726045])
-    .addTo(map);
-
-  // Create a default Marker, colored black, rotated 45 degrees.
-  const marker2 = new mapboxgl.Marker()
-    .setLngLat([1.4590296153410456, 43.63555466288775])
-    .addTo(map);
+  // Add markers
+  if (recipes && recipes.length) {
+    recipes.forEach((recipe, i) => {
+      if (recipe.placeCoordinates && recipe.placeCoordinates.length) {
+        const popupHtml = `<a href="/recipes/${recipe._id}">${recipe.name}</a>`;
+        let popup = new mapboxgl.Popup({ offset: 25 }).setHTML(popupHtml);
+           
+        let marker = new mapboxgl.Marker()
+          .setLngLat(recipe.placeCoordinates)
+          .setPopup(popup)
+          .addTo(map);
+      }
+    });
+  }
 }
-
-// Savr: sauvegarder les lieux via un geocoding: champ de recherche, enregistrer le resultat de:
-// https://nominatim.openstreetmap.org/search.php?q=bordeaux&polygon_geojson=1&format=jsonv2
-
-// Puis sur feedme, récupérer les différentes coordonnées et les afficher sur une map

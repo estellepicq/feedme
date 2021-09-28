@@ -1,3 +1,7 @@
+Version 0.2.1 (28/09/2021)
+-----------------------------
+* Can visualize recipes on a map
+
 Version 0.2.0 (19/09/2021)
 -----------------------------
 * Only keep recipes page, marmiton style for shared recipes

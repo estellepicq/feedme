@@ -80,7 +80,15 @@ app.get('/recipes/:id', function (req, res) {
 });
 
 app.get('/map', function (req, res) {
-  res.render('map');
+  request(`http://${savrUrl}/recipes/exportable`, { json: true, qs: req.query }, (err, _res, body) => {
+    const resultsLength = body ? body.length : 0;
+    if (err) {
+      res.render('map', { recipes: [], success: false });
+      return;
+    }
+    const recipes = resultsLength ? body : [];
+    res.render('map', { recipes: JSON.stringify(recipes), success: true, noData: resultsLength === 0 });
+  });
 });
 
 // Public output folder

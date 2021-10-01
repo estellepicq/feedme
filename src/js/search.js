@@ -9,7 +9,7 @@ if (searchInput) {
 }
 
 function redirectSearchUrl(selectedFilters) {
-  var url = '/?searchText=' + searchInput.value.toLowerCase();
+  var url = searchInput.value.trim() ? '/?searchText=' + searchInput.value.toLowerCase() : '/?';
   if (selectedFilters && Object.keys(selectedFilters).length) {
     for (var prop in selectedFilters) {
       url += '&' + prop + '=' + selectedFilters[prop];

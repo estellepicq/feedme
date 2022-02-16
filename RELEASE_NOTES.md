@@ -1,3 +1,8 @@
+Version 0.2.2 (16/02/2022)
+-----------------------------
+* Remove contact form, signin form and credentials
+* Remove pdf files from assets
+
 Version 0.2.1 (28/09/2021)
 -----------------------------
 * Can visualize recipes on a map

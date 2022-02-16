@@ -2,8 +2,7 @@ const rename = require('gulp-rename');
 const cleanCSS = require('gulp-clean-css');
 const minify = require('gulp-minify');
 const concat = require('gulp-concat');
-// const fileInclude = require('gulp-file-include');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const babel = require('gulp-babel');
 const del = require("del");
 const browsersync = require("browser-sync").create();
@@ -13,17 +12,6 @@ const { src, dest, parallel, series, watch } = require('gulp');
 // Directories
 const source = './src/';
 const destination = './public/';
-
-// BrowserSync
-// function browserSync(done) {
-//   browsersync.init({
-//     server: {
-//       baseDir: "./public/"
-//     },
-//     port: 3000
-//   });
-//   done();
-// }
 
 // BrowserSync reload
 function browserSyncReload(done) {

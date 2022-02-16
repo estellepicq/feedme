@@ -2,36 +2,17 @@ var app = require('express')();
 var server = require('http').createServer(app);
 var serveStatic = require('serve-static');
 var bodyParser = require('body-parser');
-var firebaseAdmin = require("firebase-admin");
-var config = require('./config/config.json');
-var firebaseConfig = require('./config/firebase.json');
-var serviceAccount = require('./config/' + config.serviceAccountKey);
 var exphbs = require('express-handlebars');
 var request = require('request');
 
 var port = process.env.PORT || 8086;
-// const savrUrl = 'savr.estellepicq.com';
-const savrUrl = 'localhost:8085';
+const savrUrl = process.env.ENVIRONMENT === 'dev' ? 'savr.estellepicq.com' : 'localhost:8085';
 
 //Server is running
 console.log('feedme is running on localhost:' + port);
 
-// Init Firebase App
-firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.cert(serviceAccount),
-  databaseURL: firebaseConfig.databaseURL
-});
-
-global.db = firebaseAdmin.firestore();
-
 // Body parser
 app.use(bodyParser.json());
-
-// Routes
-var mail = require('./routes/mail');
-var signin = require('./routes/signin');
-app.use('/mail', mail);
-app.use('/signin', signin);
 
 // Handlebars
 app.engine('handlebars', exphbs());

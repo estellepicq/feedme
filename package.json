@@ -4,7 +4,7 @@
 	"version": "0.2.1",
 	"scripts": {
 		"start:front": "node_modules/.bin/gulp serve",
-		"start:back": "nodemon app",
+		"start:back": "ENVIRONMENT=dev nodemon app",
 		"start": "concurrently \"npm run start:front\" \"npm run start:back\"",
 		"build": "node_modules/.bin/gulp"
 	},
@@ -52,7 +52,8 @@
 		"gulp-file-include": "^2.1.1",
 		"gulp-minify": "3.1.0",
 		"gulp-rename": "1.4.0",
-		"gulp-sass": "^4.0.2",
-		"merge-stream": "2.0.0"
+		"gulp-sass": "^5.1.0",
+		"merge-stream": "2.0.0",
+		"sass": "^1.49.7"
 	}
 }

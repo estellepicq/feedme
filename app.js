@@ -6,10 +6,10 @@ var exphbs = require('express-handlebars');
 var request = require('request');
 
 var port = process.env.PORT || 8086;
-const savrUrl = process.env.ENVIRONMENT === 'dev' ? 'savr.estellepicq.com' : 'localhost:8085';
+const savrUrl = process.env.NODE_ENV === 'dev' ? 'savr.estellepicq.com' : 'localhost:8085';
 
 //Server is running
-console.log('feedme is running on localhost:' + port);
+console.log('feedme is running on localhost:' + port + '\nBackend is running @ ' + savrUrl);
 
 // Body parser
 app.use(bodyParser.json());

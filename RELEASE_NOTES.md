@@ -1,3 +1,7 @@
+Version 0.2.3 (29/05/2022)
+-----------------------------
+* Can run the app from Windows
+
 Version 0.2.2 (16/02/2022)
 -----------------------------
 * Remove contact form, signin form and credentials

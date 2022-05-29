@@ -4,7 +4,7 @@
 	"version": "0.2.1",
 	"scripts": {
 		"start:front": "node_modules/.bin/gulp serve",
-		"start:back": "ENVIRONMENT=dev nodemon app",
+		"start:back": "cross-env NODE_ENV=dev npx nodemon app",
 		"start": "concurrently \"npm run start:front\" \"npm run start:back\"",
 		"build": "node_modules/.bin/gulp"
 	},
@@ -44,6 +44,7 @@
 		"babel-preset-es2015": "^6.24.1",
 		"browser-sync": "2.26.7",
 		"concurrently": "^5.1.0",
+		"cross-env": "^7.0.3",
 		"del": "^5.1.0",
 		"gulp": "4.0.2",
 		"gulp-babel": "^8.0.0",
@@ -54,6 +55,7 @@
 		"gulp-rename": "1.4.0",
 		"gulp-sass": "^5.1.0",
 		"merge-stream": "2.0.0",
+		"nodemon": "^2.0.16",
 		"sass": "^1.49.7"
 	}
 }

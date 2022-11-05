@@ -1,5 +1,7 @@
 # Feed Me
 
+> (05/11/2022) I am archiving this repository, as the feedme app is no longer useful. I am gathering feedme and savr features into [savr](https://github.com/estellepicq/savr) app.
+
 ## Description
 
 Feed Me website
